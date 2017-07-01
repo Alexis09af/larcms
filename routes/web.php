@@ -11,6 +11,17 @@
 |
 */
 
+/*
+| Ruta del índice del frontend, muestra la lista de posts.
+*/
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
+
+/*
+| Ruta de un post
+*/
+Route::get('/blog/post', function () {
+    return view('frontend..post.post');
+});
+
