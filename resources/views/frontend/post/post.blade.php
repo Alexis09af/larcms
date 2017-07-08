@@ -14,18 +14,18 @@
 
                     <div class="post-item-body">
                         <div class="padding-10">
-                            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
+                            <h1>lc_posts -> title</h1>
 
                             <div class="post-meta no-border">
                                 <ul class="post-meta-group">
-                                    <li><i class="fa fa-user"></i><a href="#"> Admin</a></li>
-                                    <li><i class="fa fa-clock-o"></i><time> February 12, 2016</time></li>
+                                    <li><i class="fa fa-user"></i><a href="#"> Alexis</a></li>
+                                    <li><i class="fa fa-clock-o"></i><time> Julio, 2017</time></li>
                                     <li><i class="fa fa-tags"></i><a href="#"> Blog</a></li>
-                                    <li><i class="fa fa-comments"></i><a href="#">4 Comments</a></li>
+                                    <li><i class="fa fa-comments"></i><a href="#">5 comentarios</a></li>
                                 </ul>
                             </div>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium molestiae, eveniet dignissimos totam recusandae nesciunt architecto consequatur sit ratione, labore asperiores ipsa molestias voluptatibus! Expedita eveniet est officia impedit recusandae.</p>
+                            <p>lc_posts -> body : Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium molestiae, eveniet dignissimos totam recusandae nesciunt architecto consequatur sit ratione, labore asperiores ipsa molestias voluptatibus! Expedita eveniet est officia impedit recusandae.</p>
                             <p>Accusamus a quod laboriosam, iusto ipsum, optio ullam ratione aspernatur molestias minima quia architecto id earum soluta ipsa veniam deserunt? Assumenda quasi non similique hic, consequuntur fugit corporis impedit? Beatae?</p>
                             <p>Veniam officiis a, odio, natus facilis recusandae voluptate et odit quasi assumenda molestiae alias culpa earum ea eius eum rerum commodi. Laudantium inventore reiciendis repellendus nisi natus voluptas, similique repellat.</p>
                             <p>Quasi iure magni sint ipsam adipisci facere hic corporis saepe nihil natus minus illum quidem dicta porro, voluptates, ea in illo itaque praesentium voluptate cumque similique. Aspernatur totam architecto nihil.</p>
