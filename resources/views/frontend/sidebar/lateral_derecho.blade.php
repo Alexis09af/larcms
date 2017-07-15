@@ -16,30 +16,16 @@
 
                     <div class="widget">
                         <div class="widget-heading">
-                            <h4>Categories</h4>
+                            <h4>Categorias</h4>
                         </div>
                         <div class="widget-body">
                             <ul class="categories">
+                                @foreach($categorias as $categoria)
                                 <li>
-                                    <a href="#"><i class="fa fa-angle-right"></i> Web Development</a>
-                                    <span class="badge pull-right">10</span>
+                                    <a href="{{ route('muestraCategoria',$categoria->id) }}"><i class="fa fa-angle-right"></i> {{ $categoria->titulo }}</a>
+                                    <span class="badge pull-right">{{ $categoria->posts->count() }}</span>
                                 </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-angle-right"></i> Web Design</a>
-                                    <span class="badge pull-right">10</span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-angle-right"></i> General</a>
-                                    <span class="badge pull-right">10</span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-angle-right"></i> DIY</a>
-                                    <span class="badge pull-right">10</span>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-angle-right"></i> Facebook Development</a>
-                                    <span class="badge pull-right">10</span>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

@@ -27,3 +27,8 @@ Route::get('/blog/{post}',[
     'as' => 'muestraPost'
 ]);
 
+
+Route::get('/categoria/{categoria}',[
+    'uses' => 'BlogController@muestraCategoria',
+    'as' => 'muestraCategoria'
+]);
