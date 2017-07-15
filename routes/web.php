@@ -22,7 +22,8 @@ Route::get('/', [
 /*
 | Ruta de un post
 */
-Route::get('/blog/post', function () {
-    return view('frontend.post.post');
-});
+Route::get('/blog/{post}',[
+    'uses' => 'BlogController@muestraPost',
+    'as' => 'muestraPost'
+]);
 

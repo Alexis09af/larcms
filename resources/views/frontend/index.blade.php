@@ -10,15 +10,15 @@
                     <article class="post-item">
                         @if($post->imagen)
                             <div class="post-item-image">
-                                <a href="post.html">
+                                <a href="{{route('muestraPost',$post->slug)}}">
                                     <img src="{{ $post->imagen }}" alt="">
                                 </a>
                             </div>
                         @endif
                         <div class="post-item-body">
                             <div class="padding-10">
-                                <h2><a href="post.html">{{ $post->title }}</a></h2>
-                                <p>{{ $post->excerpt }}</p>
+                                <h2><a href="{{route('muestraPost',$post->slug)}}">{{ $post->title }}</a></h2>
+                                <p>{!! $post->excerpt_html !!}</p>
                             </div>
 
                             <div class="post-meta padding-10 clearfix">
@@ -31,7 +31,7 @@
                                     </ul>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="post.html">Continue Reading &raquo;</a>
+                                    <a href=" {{ route('muestraPost',$post->slug) }} ">Continue Reading &raquo;</a>
                                 </div>
                             </div>
                         </div>
