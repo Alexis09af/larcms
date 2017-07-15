@@ -25,7 +25,7 @@
                                 <div class="pull-left">
                                     <ul class="post-meta-group">
                                         <li><i class="fa fa-user"></i><a href="#"> {{ $post->autor->name }}</a></li>
-                                        <li><i class="fa fa-clock-o"></i><time> {{$post->fecha}}</time></li>
+                                        <li><i class="fa fa-clock-o"></i><time> {{$post->fechaPublicacion}}</time></li>
                                         <li><i class="fa fa-tags"></i><a href="#"> Blog</a></li>
                                         <li><i class="fa fa-comments"></i><a href="#">4 Comments</a></li>
                                     </ul>
