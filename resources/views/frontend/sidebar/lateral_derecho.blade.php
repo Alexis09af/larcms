@@ -30,54 +30,32 @@
             </div>
         </div>
 
-        <!--<div class="widget">
+        <div class="widget">
             <div class="widget-heading">
                 <h4>Popular Posts</h4>
             </div>
             <div class="widget-body">
                 <ul class="popular-posts">
+                    @foreach ($postsPopulares as $popular)
                     <li>
                         <div class="post-image">
-                            <a href="#">
-                                <img src="/img/Post_Image_5_thumb.jpg" />
+                            <a href="{{ route('muestraPost', $popular->slug) }}">
+                                @if ($popular->image_thumb_url)
+                                    <img src="{{ $popular->image_thumb_url }}" alt="">
+                                @endif
                             </a>
                         </div>
                         <div class="post-body">
-                            <h6><a href="#">Blog Post #5</a></h6>
+                            <h6><a href="{{ route('muestraPost', $post->slug) }}">{{ $popular->titulo }}</a></h6>
                             <div class="post-meta">
-                                <span>36 minutes ago</span>
+                                <span>{{ $popular->fechaPublicacion }}</span>
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <div class="post-image">
-                            <a href="#">
-                                <img src="/img/Post_Image_4_thumb.jpg" />
-                            </a>
-                        </div>
-                        <div class="post-body">
-                            <h6><a href="#">Blog Post #4</a></h6>
-                            <div class="post-meta">
-                                <span>36 minutes ago</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="post-image">
-                            <a href="#">
-                                <img src="/img/Post_Image_3_thumb.jpg" />
-                            </a>
-                        </div>
-                        <div class="post-body">
-                            <h6><a href="#">Blog Post #3</a></h6>
-                            <div class="post-meta">
-                                <span>36 minutes ago</span>
-                            </div>
-                        </div>
-                    </li>
+                        @endforeach
                 </ul>
             </div>
-        </div> -->
+        </div>
 
         <!--
         <div class="widget">
