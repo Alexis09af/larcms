@@ -37,3 +37,7 @@ Route::get('/autor/{autor}',[
     'uses' => 'BlogController@autor',
     'as' => 'autor'
 ]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
