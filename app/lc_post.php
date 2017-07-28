@@ -42,7 +42,25 @@ class lc_post extends Model
 
     public function scopePopular($query){
         return $query->orderBy('contador_visitas', 'desc');
+    }
 
+    public function fechaFormatoES($showTimes = false){
+        $format = "d/m/Y";
+        if($showTimes) $format = $format . "H:i:s";
+        return $this->created_at->format($format);
+    }
+
+    public function publicationLabel()
+    {
+        if ( ! $this->published_at) {
+            return '<span class="label label-warning">Despublicado</span>';
+        }
+        elseif ($this->published_at && $this->published_at->isFuture()) {
+            return '<span class="label label-info">Pendiente</span>';
+        }
+        else {
+            return '<span class="label label-success">Publicado</span>';
+        }
     }
 
     //Devuelve la imagen de un post

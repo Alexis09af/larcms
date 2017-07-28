@@ -49,8 +49,8 @@
                                       <td>{{ $post->autor->nombre }}</td>
                                       <td>{{ $post->categoria->titulo }}</td>
                                       <td>
-                                          <?php /*<abbr title="{{ $post->dateFormatted(true) }}">{{ $post->dateFormatted() }}</abbr> |
-                                          {!! $post->publicationLabel() !!} */ ?>
+                                          <abbr title="{{ $post->fechaFormatoES(true) }}">{{ $post->fechaFormatoES() }}</abbr> |
+                                          {!! $post->publicationLabel() !!}
                                       </td>
                                   </tr>
 
@@ -61,11 +61,13 @@
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <div class="pull-left">
-                                <?php /*{{ $posts->render() }}*/?>
+                                {{ $posts->render() }}
                             </div>
-                            <div class="pull-right">
+                            <div class="pull-right ">
                                 <?php $postCount = $posts->count() ?>
-                                <small>{{ $postCount }} {{ str_plural('Item', $postCount) }}</small>
+                                <p><small class="float-right">Mostrando: {{$postCount}}</small></p>
+                                <p><small class="float-right">Total: {{$postsTotales}}</small></p>
+
                             </div>
                         </div>
                     </div>
