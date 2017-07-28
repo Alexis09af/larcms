@@ -30,7 +30,7 @@
 
     @include('backend.navbar')
 
-    @include('backend.lateral_derecho')
+    @include('backend.sidebar')
 
 
     @yield('content')

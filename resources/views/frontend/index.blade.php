@@ -63,7 +63,7 @@
                 </nav>
             </div>
 
-            @include('frontend.sidebar.lateral_derecho')
+            @include('frontend.sidebar.sidebar')
 
         </div>
     </div>

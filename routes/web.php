@@ -40,4 +40,6 @@ Route::get('/autor/{autor}',[
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Backend\HomeController@index')->name('home');
+
+Route::get('logout', 'Auth\LoginController@logout');

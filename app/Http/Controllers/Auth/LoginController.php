@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+use Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Request;
 
 class LoginController extends Controller
 {
@@ -21,11 +23,21 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Redirige al usuario al backend al hacer login
      *
      * @var string
      */
     protected $redirectTo = '/home';
+
+    /**
+     * Redirige al usuario a la página de login tras hacer logout
+     *
+     * @var request
+     */
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/login');
+    }
 
     /**
      * Create a new controller instance.
@@ -36,4 +48,8 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+
+
+
 }
