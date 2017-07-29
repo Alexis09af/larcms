@@ -10,7 +10,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class lc_post extends Model
 {
 
-    protected $fillable = ['titulo','slug','categoria_id','excerpt','body','published_at'];
+    protected $fillable = ['titulo','slug','categoria_id','excerpt','body','published_at','image'];
     protected $dates = ['published_at'];
 
     //Devuelve a que usuario pertenece el post.
@@ -74,8 +74,9 @@ class lc_post extends Model
         $imageUrl = "";
         if ( ! is_null($this->image))
         {
-            $imagePath = public_path() . "/img/" . $this->image;
-            if (file_exists($imagePath)) $imageUrl = asset("img/" . $this->image);
+            $dir = config('cms.image.directory');
+            $imagePath = public_path() . "/{$dir}/" . $this->image;
+            if (file_exists($imagePath)) $imageUrl = asset("{$dir}/" . $this->image);
         }
         return $imageUrl;
     }
@@ -86,10 +87,11 @@ class lc_post extends Model
         $imageUrl = "";
         if ( ! is_null($this->image))
         {
+            $dir = config('cms.image.directory');
             $ext = substr(strrchr($this->image, '.'), 1);
             $thumbnail = str_replace(".{$ext}", "_thumb.{$ext}", $this->image);
-            $imagePath = public_path() . "/img/" . $thumbnail;
-            if (file_exists($imagePath)) $imageUrl = asset("img/" . $thumbnail);
+            $imagePath = public_path() . "/{$dir}/" . $thumbnail;
+            if (file_exists($imagePath)) $imageUrl = asset("{$dir}/" . $thumbnail);
         }
         return $imageUrl;
     }

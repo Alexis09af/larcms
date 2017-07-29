@@ -29,9 +29,22 @@
                         <div class="box-body ">
                             {!! Form::model($post, [
                                 'method' => 'POST',
-                                'route' => 'backend.blog.store'
+                                'route' => 'backend.blog.store',
+                                'files' => TRUE
                             ]) !!}
 
+                            <!-- IMAGEN -->
+                            <div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
+                                {!! Form::label('Imagen') !!}
+                                {!! Form::file('image') !!}
+
+                                @if($errors->has('image'))
+                                    <span class="help-block">{{ $errors->first('image') }} </span>
+                                @endif
+                            </div>
+
+
+                            <!-- TÍTULO -->
                             <div class="form-group {{ $errors->has('titulo') ? 'has-error' : '' }} ">
                                 {!! Form::label('Título') !!}
                                 {!! Form::text('titulo',null, ['class'=>'form-control']) !!}
@@ -41,6 +54,8 @@
                                 @endif
                             </div>
 
+
+                            <!-- SLUG -->
                             <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }} ">
                                 {!! Form::label('Slug') !!}
                                 {!! Form::text('slug',null, ['class'=>'form-control']) !!}
@@ -50,6 +65,8 @@
                                 @endif
                             </div>
 
+
+                            <!-- CATEGORIA -->
                             <div class="form-group {{ $errors->has('categoria_id') ? 'has-error' : '' }}">
                                 {!! Form::label('Categoria') !!}
                                 {!! Form::select('categoria_id',App\lc_categoria::pluck('titulo','id'),null, ['class'=>'form-control','placeholder'=>'Categoria']) !!}
@@ -59,11 +76,15 @@
                                 @endif
                             </div>
 
+
+                            <!-- EXCERPT -->
                             <div class="form-group ">
                                 {!! Form::label('Excerpt') !!}
                                 {!! Form::textarea('excerpt',null, ['class'=>'form-control']) !!}
                             </div>
 
+
+                            <!-- DESCRIPCIÓN -->
                             <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
                                 {!! Form::label('Descripción') !!}
                                 {!! Form::textarea('body',null, ['class'=>'form-control']) !!}
@@ -73,6 +94,8 @@
                                 @endif
                             </div>
 
+
+                            <!-- FECHA PUBLICACIÓN -->
                             <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
                                 {!! Form::label('Fecha Publicación') !!}
                                 {!! Form::text('published_at',null, ['class'=>'form-control','placeholder'=>'Y-m-d H:m:s']) !!}
