@@ -46,7 +46,7 @@
 
                             <!-- TÍTULO -->
                             <div class="form-group {{ $errors->has('titulo') ? 'has-error' : '' }} ">
-                                {!! Form::label('Título') !!}
+                                {!! Form::label('titulo','Título') !!}
                                 {!! Form::text('titulo',null, ['class'=>'form-control']) !!}
 
                                 @if($errors->has('titulo'))
@@ -57,7 +57,7 @@
 
                             <!-- SLUG -->
                             <div class="form-group {{ $errors->has('slug') ? 'has-error' : '' }} ">
-                                {!! Form::label('Slug') !!}
+                                {!! Form::label('slug','Slug') !!}
                                 {!! Form::text('slug',null, ['class'=>'form-control']) !!}
 
                                 @if($errors->has('slug'))
@@ -68,7 +68,7 @@
 
                             <!-- CATEGORIA -->
                             <div class="form-group {{ $errors->has('categoria_id') ? 'has-error' : '' }}">
-                                {!! Form::label('Categoria') !!}
+                                {!! Form::label('categoria','Categoria') !!}
                                 {!! Form::select('categoria_id',App\lc_categoria::pluck('titulo','id'),null, ['class'=>'form-control','placeholder'=>'Categoria']) !!}
 
                                 @if($errors->has('categoria_id'))
@@ -78,15 +78,15 @@
 
 
                             <!-- EXCERPT -->
-                            <div class="form-group ">
-                                {!! Form::label('Excerpt') !!}
+                            <div class="form-group excerpt">
+                                {!! Form::label('excerpt','Excerpt') !!}
                                 {!! Form::textarea('excerpt',null, ['class'=>'form-control']) !!}
                             </div>
 
 
                             <!-- DESCRIPCIÓN -->
                             <div class="form-group {{ $errors->has('body') ? 'has-error' : '' }}">
-                                {!! Form::label('Descripción') !!}
+                                {!! Form::label('body','Descripción') !!}
                                 {!! Form::textarea('body',null, ['class'=>'form-control']) !!}
 
                                 @if($errors->has('body'))
@@ -97,7 +97,7 @@
 
                             <!-- FECHA PUBLICACIÓN -->
                             <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
-                                {!! Form::label('Fecha Publicación') !!}
+                                {!! Form::label('published_at','Fecha Publicación') !!}
                                 {!! Form::text('published_at',null, ['class'=>'form-control','placeholder'=>'Y-m-d H:m:s']) !!}
 
                                 @if($errors->has('published_at'))
@@ -116,7 +116,6 @@
                 </div>
                 <!-- /.box -->
             </div>
-    </div>
     <!-- ./row -->
     </section>
     <!-- /.content -->
@@ -126,6 +125,25 @@
 
 @section('script')
     <script type="text/javascript">
+        //Añadimos clases al pagination del backend del blog
         $('ul.pagination').addClass('no-margin pagination-sm');
+
+        $('#titulo').on('blur',function(){
+            var tituloConvertido = this.value.toLowerCase().trim();
+                slugInput = $('#slug');
+
+            tituloConvertido = tituloConvertido.replace(/&/g, '-y-')
+                .replace(/[^a-z0-9-]+/g, '-')
+                .replace(/\-\-+/g, '-')
+                .replace(/^-+|-+$/g, '');
+
+                slugInput.val(tituloConvertido);
+        });
+
+        var simplemde1 = new SimpleMDE({ element: $("#excerpt")[0] });
+
+        var simplemde2 = new SimpleMDE({ element: $("#body")[0] });
+
+
     </script>
 @endsection

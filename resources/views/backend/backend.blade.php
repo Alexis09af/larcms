@@ -19,6 +19,10 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/backend/css/skins/_all-skins.min.css">
 
+    <!-- Simple -mde -->
+    <link rel="stylesheet" href="/backend/plugins/simple-mde/simplemde.min.css">
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -53,6 +57,10 @@
 <script src="/backend/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/backend/js/app.min.js"></script>
+<!-- Simple mde App -->
+<script src="/backend/plugins/simple-mde/simplemde.min.js"></script>
+
+
 @yield('script')
 </body>
 </html>
