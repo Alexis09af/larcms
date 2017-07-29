@@ -1,6 +1,6 @@
 @extends('backend.backend')
 
-@section('title', 'MyBlog | Dashboard')
+@section('title', 'MyBlog | Escritorio')
 
 @section('content')
 
@@ -8,10 +8,10 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dasbhboard
+                Escritorio
             </h1>
             <ol class="breadcrumb">
-                <li class="active"><i class="fa fa-dashboard"></i> Dashboard</li>
+                <li class="active"><i class="fa fa-dashboard"></i> Escritorio</li>
             </ol>
         </section>
 

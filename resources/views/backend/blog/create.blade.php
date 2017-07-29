@@ -13,7 +13,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li>
-                    <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
+                    <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Escritorio</a>
                 </li>
                 <li><a href="{{ route('backend.blog.index') }}">Blog</a></li>
                 <li class="active">Añadir Publicación</li>
@@ -23,25 +23,19 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-xs-12">
+                {!! Form::model($post, [
+                    'method' => 'POST',
+                    'route' => 'backend.blog.store',
+                    'files' => TRUE,
+                    'id' => 'post-form'
+                ]) !!}
+                <div class="col-xs-9">
                     <div class="box">
                         <!-- /.box-header -->
                         <div class="box-body ">
-                            {!! Form::model($post, [
-                                'method' => 'POST',
-                                'route' => 'backend.blog.store',
-                                'files' => TRUE
-                            ]) !!}
 
-                            <!-- IMAGEN -->
-                            <div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
-                                {!! Form::label('Imagen') !!}
-                                {!! Form::file('image') !!}
 
-                                @if($errors->has('image'))
-                                    <span class="help-block">{{ $errors->first('image') }} </span>
-                                @endif
-                            </div>
+
 
 
                             <!-- TÍTULO -->
@@ -66,15 +60,7 @@
                             </div>
 
 
-                            <!-- CATEGORIA -->
-                            <div class="form-group {{ $errors->has('categoria_id') ? 'has-error' : '' }}">
-                                {!! Form::label('categoria','Categoria') !!}
-                                {!! Form::select('categoria_id',App\lc_categoria::pluck('titulo','id'),null, ['class'=>'form-control','placeholder'=>'Categoria']) !!}
 
-                                @if($errors->has('categoria_id'))
-                                    <span class="help-block">{{ $errors->first('categoria_id') }} </span>
-                                @endif
-                            </div>
 
 
                             <!-- EXCERPT -->
@@ -94,27 +80,90 @@
                                 @endif
                             </div>
 
-
-                            <!-- FECHA PUBLICACIÓN -->
-                            <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
-                                {!! Form::label('published_at','Fecha Publicación') !!}
-                                {!! Form::text('published_at',null, ['class'=>'form-control','placeholder'=>'Y-m-d H:m:s']) !!}
-
-                                @if($errors->has('published_at'))
-                                    <span class="help-block">{{ $errors->first('published_at') }} </span>
-                                @endif
-                            </div>
-
-
-
-
-                            {!! Form::submit('Confirma la publicación',['class'=>'btn btn-primary']) !!}
-                            {!! Form::close() !!}
                         </div>
                     </div>
                     <!-- /.box -->
                 </div>
-                <!-- /.box -->
+                 <div class="col-xs-3">
+                     <div class="box">
+                         <div class="box-header with-border">
+                            <h3 class="box-title">Publicar</h3>
+                         </div>
+                         <div class="box-body">
+                             <!-- FECHA PUBLICACIÓN -->
+                             <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
+                                 {!! Form::label('published_at','Fecha Publicación') !!}
+                                 <div class="form-group">
+                                     <div class='input-group date' id='datetimepicker1'>
+                                         {!! Form::text('published_at',null, ['class'=>'form-control','placeholder'=>'Y-m-d H:m:s']) !!}
+                                         <span class="input-group-addon">
+                                             <span class="glyphicon glyphicon-calendar"></span>
+                                         </span>
+                                     </div>
+                                 </div>
+                                 @if($errors->has('published_at'))
+                                     <span class="help-block">{{ $errors->first('published_at') }} </span>
+                                 @endif
+                             </div>
+                         </div>
+                         <div class="box-footer clearfix">
+                             <div class="pull-left">
+                                 <a id="draft-btn"  class="btn btn-default">Solo gúardar</a>
+                             </div>
+                             <div class="pull-right">
+                                 {!! Form::submit('Publicar',['class'=>'btn btn-primary']) !!}
+                             </div>
+                         </div>
+                     </div>
+                     <div class="box">
+                         <div class="box-header with-border">
+                             <h3 class="box-title">Categoria</h3>
+                         </div>
+                         <div class="box-body text-center">
+
+                             <!-- CATEGORIA -->
+                             <div class="form-group {{ $errors->has('categoria_id') ? 'has-error' : '' }}">
+                                 {!! Form::select('categoria_id',App\lc_categoria::pluck('titulo','id'),null, ['class'=>'form-control','placeholder'=>'Categoria']) !!}
+
+                                 @if($errors->has('categoria_id'))
+                                     <span class="help-block">{{ $errors->first('categoria_id') }} </span>
+                                 @endif
+                             </div>
+                         </div>
+                     </div>
+                     <div class="box">
+                         <div class="box-header with-border">
+                             <h3 class="box-title">Imagen</h3>
+                         </div>
+                         <div class="box-body text-center">
+
+                             <!-- IMAGEN -->
+                             <div class="form-group {{ $errors->has('image') ? 'has-error' : '' }}">
+
+
+                                 <div class="fileinput fileinput-new" data-provides="fileinput">
+                                     <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                         <img src="http://placehold.it/200x150$text=No+Image" alt="...">
+                                     </div>
+                                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                                     <div>
+                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+                                        {!! Form::file('image') !!}
+                                    </span>
+                                         <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                                     </div>
+                                 </div>
+
+
+                                 @if($errors->has('image'))
+                                     <span class="help-block">{{ $errors->first('image') }} </span>
+                                 @endif
+                             </div>
+                         </div>
+                     </div>
+
+                 </div>
+                {!! Form::close() !!}
             </div>
     <!-- ./row -->
     </section>
@@ -140,9 +189,22 @@
                 slugInput.val(tituloConvertido);
         });
 
+        //Añade el editor SimpleMde a el excerpt y a la descripción
         var simplemde1 = new SimpleMDE({ element: $("#excerpt")[0] });
-
         var simplemde2 = new SimpleMDE({ element: $("#body")[0] });
+
+        $('#datetimepicker1').datetimepicker(
+            {
+                format: 'YYYY-MM-DD HH:mm:ss',
+                showClear: true
+            }
+        );
+
+        $('#draft-btn').click(function(e){
+            e.preventDefault();
+            $('#published_at').val("");
+            $('#post-form').submit();
+        });
 
 
     </script>

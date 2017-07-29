@@ -22,6 +22,12 @@
     <!-- Simple -mde -->
     <link rel="stylesheet" href="/backend/plugins/simple-mde/simplemde.min.css">
 
+    <!-- Datetimepicker css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+
+
+    <!-- Jasny Bootstrap-->
+    <link rel="stylesheet" href="/backend/plugins/jasny-bootstrap/css/jasny-bootstrap.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,6 +65,12 @@
 <script src="/backend/js/app.min.js"></script>
 <!-- Simple mde App -->
 <script src="/backend/plugins/simple-mde/simplemde.min.js"></script>
+<!-- Jasny -->
+<script src="/backend/plugins/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+<!-- Moment js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+<!-- Bootstrap datetimepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
 
 @yield('script')
