@@ -14,7 +14,7 @@ class AnadirContadorVisitasPost extends Migration
     public function up()
     {
         Schema::table('lc_posts', function(Blueprint $table){
-            $table->integer('contador_visitas');
+            $table->integer('contador_visitas')->default(0);
         });
     }
 

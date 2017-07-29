@@ -21,7 +21,7 @@ class CreateLcPostsTable extends Migration
             $table->string('slug',250)->unique();
             $table->text('excerpt');
             $table->text('body');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('lc_categorias')->onDelete('restrict');
             $table->timestamps();

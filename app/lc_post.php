@@ -10,6 +10,7 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 class lc_post extends Model
 {
 
+    protected $fillable = ['titulo','slug','categoria_id','excerpt','body','published_at'];
     protected $dates = ['published_at'];
 
     //Devuelve a que usuario pertenece el post.
@@ -45,11 +46,15 @@ class lc_post extends Model
     }
 
     public function fechaFormatoES($showTimes = false){
-        $format = "d/m/Y";
+        $format = "Y-m-d";
         if($showTimes) $format = $format . "H:i:s";
-        return $this->created_at->format($format);
+        return $this->published_at->format($format);
     }
 
+
+    public function setBoolPublicadoAttribute($value){
+        $this->attributes['published_at'] = $value ?: NULL;
+    }
     public function publicationLabel()
     {
         if ( ! $this->published_at) {

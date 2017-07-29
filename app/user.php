@@ -30,6 +30,7 @@ class user extends Authenticatable
     public function posts()
     {
         return $this->hasMany(lc_post::class,'autor_id');
+
     }
 
     public function gravatar(){
