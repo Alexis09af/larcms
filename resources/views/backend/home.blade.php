@@ -1,6 +1,6 @@
 @extends('backend.backend')
 
-@section('title', 'MyBlog | Escritorio')
+@section('title', 'larCMS | Escritorio')
 
 @section('content')
 

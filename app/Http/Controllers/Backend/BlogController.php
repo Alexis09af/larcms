@@ -110,7 +110,8 @@ class BlogController extends BackendController
      */
     public function edit($id)
     {
-        //
+        $post = lc_post::findOrFail($id);
+        return view("backend.blog.edit",compact('post'));
     }
 
     /**
@@ -120,9 +121,12 @@ class BlogController extends BackendController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Requests\PostRequest $request, $id)
     {
-        //
+        $post = lc_post::findOrFail($id);
+        $data = $this->handleRequest($request);
+        $post->update($data);
+        return redirect(route('backend.blog.index'))->with('creado','La publicación ha sido editada correctamente!');
     }
 
     /**

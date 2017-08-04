@@ -24,7 +24,7 @@ class PostRequest extends FormRequest
     public function rules()
     {
         //Obligamos a que estos elementos del formulario sean obligatorios
-        return
+        $rules =
             [
                 'titulo' => 'required',
                 'slug' => 'required|unique:lc_posts',
@@ -33,6 +33,14 @@ class PostRequest extends FormRequest
                 'published_at' => 'required|date_format:Y-m-d H:i:s',
                 'image' => 'mimes:jpg,jpeg,bmp,png'
             ];
+
+        switch($this->method()){
+            case 'PUT':
+            case 'PATCH':
+                $rules['slug'] = 'required|unique:lc_posts,slug,'.$this->route('blog');
+                default:break;
+        }
+        return $rules;
     }
 
     //Mensajes de error
