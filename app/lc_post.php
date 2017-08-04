@@ -3,13 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 use GrahamCampbell\Markdown\Facades\Markdown;
 
 
+
 class lc_post extends Model
 {
-
+    use SoftDeletes;
     protected $fillable = ['titulo','slug','categoria_id','excerpt','body','published_at','image'];
     protected $dates = ['published_at'];
 
@@ -46,9 +48,9 @@ class lc_post extends Model
     }
 
     public function fechaFormatoES($showTimes = false){
-        $format = "Y-m-d";
+        $format = "d-m-Y";
         if($showTimes) $format = $format . "H:i:s";
-        return $this->published_at->format($format);
+        return ($this->published_at) ? $this->published_at->format($format) : 'd-m-Y';
     }
 
 

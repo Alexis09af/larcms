@@ -15,6 +15,7 @@ class AnadirFechaPublicacionColumna extends Migration
     {
         Schema::table('lc_posts', function (Blueprint $table) {
             $table->timestamp('published_at')->nullable();
+            $table->softDeletes();
         });
     }
 
@@ -27,6 +28,7 @@ class AnadirFechaPublicacionColumna extends Migration
     {
         Schema::table('lc_posts', function (Blueprint $table) {
             $table->dropColumn('published_at');
+            $table->dropSoftDeletes();
         });
     }
 }

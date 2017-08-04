@@ -26,13 +26,20 @@ class BlogController extends BackendController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $postsTotales = lc_post::count();
 
-
-        $posts = lc_post::with('categoria','autor')->latest()->paginate($this->publicacionesPorPagina);
-        return view("backend.blog.index",compact('posts','postsTotales'));
+        if(($status = $request->get('status')) && $status =='papelera'){
+            $postsTotales = lc_post::onlyTrashed()->count();
+            $posts = lc_post::onlyTrashed()->with('categoria','autor')->latest()->paginate($this->publicacionesPorPagina);
+            $onlyTrashed = TRUE;
+        }
+        else{
+            $postsTotales = lc_post::count();
+            $posts = lc_post::with('categoria','autor')->latest()->paginate($this->publicacionesPorPagina);
+            $onlyTrashed = FALSE;
+        }
+        return view("backend.blog.index",compact('posts','postsTotales','onlyTrashed'));
     }
 
     /**
@@ -58,7 +65,7 @@ class BlogController extends BackendController
 
         $data = $this->handleRequest($request);
         $request->user()->posts()->create($data);
-        return redirect(route('backend.blog.index'))->with('creado','La publicación ha sido creada correctamente!');
+        return redirect(route('backend.blog.index'))->with('mensaje','La publicación ha sido creada correctamente!');
     }
 
     private function handleRequest($request){
@@ -126,7 +133,7 @@ class BlogController extends BackendController
         $post = lc_post::findOrFail($id);
         $data = $this->handleRequest($request);
         $post->update($data);
-        return redirect(route('backend.blog.index'))->with('creado','La publicación ha sido editada correctamente!');
+        return redirect(route('backend.blog.index'))->with('mensaje','La publicación ha sido editada correctamente!');
     }
 
     /**
@@ -137,6 +144,23 @@ class BlogController extends BackendController
      */
     public function destroy($id)
     {
-        //
+        lc_post::findOrFail($id)->delete();
+        return redirect(route('backend.blog.index'))->with('enviado-papelera',['La publicación ha sido enviada a la papelera!',$id]);
     }
+
+    public function restore($id)
+    {
+        $post = lc_post::withTrashed()->findOrFail($id);
+        $post->restore();
+        return redirect(route('backend.blog.index'))->with('mensaje','La publicación ha sido restaurada correctamente.');
+    }
+
+    public function forceDestroy($id)
+    {
+
+        lc_post::withTrashed()->findOrFail($id)->forceDelete();
+        return redirect(route('backend.blog.index'))->with('mensaje','La publicación ha sido eliminada correctamente.');
+
+    }
+
 }
