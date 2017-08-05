@@ -1,6 +1,6 @@
 @extends('backend.backend')
 
-@section('title', 'larCMS | Editar Categoriía')
+@section('title', 'larCMS | Editar Categoría')
 
 @section('content')
 
@@ -16,7 +16,7 @@
                     <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Escritorio</a>
                 </li>
                 <li><a href="{{ route('backend.categorias.index') }}">Blog</a></li>
-                <li class="active">Editar Categoriía</li>
+                <li class="active">Editar Categoría</li>
             </ol>
         </section>
 

@@ -24,7 +24,7 @@
                     <button onclick="return confirm('Vas a eliminar la categoría, estás seguro?');" type="submit" class="btn btn-xs btn-danger">
                         <i class="fa fa-times"></i>
                     </button>
-                @endif
+                 @endif
 
 
 

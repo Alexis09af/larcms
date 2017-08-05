@@ -1,6 +1,6 @@
 @extends('backend.backend')
 
-@section('title', 'larCMS | Categorias')
+@section('title', 'larCMS | Usuarios')
 
 @section('content')
 
@@ -8,15 +8,15 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Categorias
-                <small>Muestra las categorías</small>
+                Usuarios
+                <small>Muestra los Usuarios</small>
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
                 </li>
-                <li><a href="{{ route('backend.categorias.index') }}">Categorías</a></li>
-                <li class="active">Todas las categorías</li>
+                <li><a href="{{ route('backend.usuarios.index') }}">Usuarios</a></li>
+                <li class="active">Todos los Usuarios</li>
             </ol>
         </section>
 
@@ -27,7 +27,7 @@
                     <div class="box">
                         <div class="box-header clearfix">
                             <div class=pull-left">
-                                <a href="{{ route('backend.categorias.create') }}" class="btn btn-info">Crea una categoría</a>
+                                <a href="{{ route('backend.usuarios.create') }}" class="btn btn-info">Añadir Usuario</a>
                             </div>
                             <div class="pull-right">
                             </div>
@@ -38,21 +38,21 @@
 
                         <!-- Si no hay publicaciones -->
 
-                            @if (! $categorias->count())
+                            @if (! $usuarios->count())
                                 <div class="alert alert-info">
-                                    <strong>No hay categorías.</strong>
+                                    <strong>No hay Usuarios.</strong>
                                 </div>
                             @else
-                                    @include('backend.categorias.table')
+                                    @include('backend.usuarios.table')
                             @endif
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <div class="pull-left">
-                                {{ $categorias->render() }}
+                                {{ $usuarios->render() }}
                             </div>
                             <div class="pull-right ">
-                                <p><small class="float-right">Categorías: {{$totalCategorias}}</small></p>
+                                <p><small class="float-right">Usuarios: {{$totalUsuarios}}</small></p>
                             </div>
                         </div>
                     </div>

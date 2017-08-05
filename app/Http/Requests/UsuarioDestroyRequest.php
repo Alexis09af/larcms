@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoriaDestroyRequest extends FormRequest
+class UsuarioDestroyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,11 +13,9 @@ class CategoriaDestroyRequest extends FormRequest
      */
     public function authorize()
     {
-        //Si es la categoría con ID = 1 (representa sin categoria) haremos que no se pueda borrar.
-        return !($this->route('categoria') == config('cms.default_categoria_id'));
-        return true;
+        //Si es el usuario actual haremos que no se pueda borrar.
+        return !($this->route('usuarios') == config('cms.default_usuario_id'));
     }
-
 
     /**
      * Get the validation rules that apply to the request.

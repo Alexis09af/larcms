@@ -16,10 +16,10 @@ class CreateLcUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('slug',250)->unique();
+            $table->string('slug',250)->unique()->nullable();
             $table->string('email',250)->unique();
             $table->string('password');
-            $table->string('biografia');
+            $table->string('biografia')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

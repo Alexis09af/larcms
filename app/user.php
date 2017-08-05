@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use Laratrust\Traits\LaratrustUserTrait; //Laratrust Para roles
 
 class user extends Authenticatable
 {
+
+    use LaratrustUserTrait;
     /**
      * The attributes that are mass assignable.
      *
@@ -49,4 +52,8 @@ class user extends Authenticatable
         return $this->biografia ? Markdown::convertToHtml(e($this->biografia)) : NULL;
     }
 
+    public function setPasswordAttribute($value)
+    {
+        if (!empty($value)) $this->attributes['password'] = bcrypt($value);
+    }
 }

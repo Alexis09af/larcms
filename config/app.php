@@ -136,6 +136,7 @@ return [
     */
 
     'providers' => [
+        Laratrust\LaratrustServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
@@ -194,6 +195,7 @@ return [
     */
 
     'aliases' => [
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,

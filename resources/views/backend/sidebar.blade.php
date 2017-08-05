@@ -34,7 +34,8 @@
                     <li><a href=" {{route('backend.blog.create')}}"><i class="fa fa-circle-o"></i> Añadir nueva</a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('backend.categorias.index') }}"><i class="fa fa-folder"></i> <span>Categorias</span></a></li>
+            <li><a href="{{ route('backend.categorias.index') }}"><i class="fa fa-folder"></i> <span>Categorías</span></a></li>
+            <li><a href="{{ route('backend.usuarios.index') }}"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
         </ul>
     </section>
     <!-- /.sidebar -->

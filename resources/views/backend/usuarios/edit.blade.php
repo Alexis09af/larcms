@@ -1,6 +1,6 @@
 @extends('backend.backend')
 
-@section('title', 'larCMS | Añadir Categoría')
+@section('title', 'larCMS | Editar Usuario')
 
 @section('content')
 
@@ -8,28 +8,28 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Categorías
-                <small>Añadir Categoría</small>
+                Blog
+                <small>Editar Usuario</small>
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Escritorio</a>
                 </li>
-                <li><a href="{{ route('backend.categorias.index') }}">Categorías</a></li>
-                <li class="active">Añadir Categoría</li>
+                <li><a href="{{ route('backend.usuarios.index') }}">Blog</a></li>
+                <li class="active">Editar Usuario</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                {!! Form::model($categoria, [
-                    'method' => 'POST',
-                    'route' => 'backend.categorias.store',
+                {!! Form::model($usuario, [
+                    'method' => 'PUT',
+                    'route' => ['backend.usuarios.update',$usuario->id],
                     'files' => TRUE,
-                    'id' => 'categoria-form'
+                    'id' => 'usuarios-form'
                 ]) !!}
-                @include('backend.categorias.form')
+                @include('backend.usuarios.form')
                 {!! Form::close() !!}
             </div>
     <!-- ./row -->
@@ -38,3 +38,4 @@
     </div>
 
 @endsection
+

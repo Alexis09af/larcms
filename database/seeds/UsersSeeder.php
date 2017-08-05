@@ -22,15 +22,22 @@ class UsersSeeder extends Seeder
                     'nombre' => 'Alexis',
                     'slug' => 'alexis',
                     'email' => 'Alexis@udg.com',
-                    'password' => bcrypt('secret'),
+                    'password' => bcrypt('alexis'),
                     'biografia' => 'Aficionado a la fotografia'
                 ],
                 [
-                    'nombre' => 'Antonio',
+                    'nombre' => 'Antonio Modera',
                     'slug' => 'antonio',
                     'email' => 'Antonio@udg.com',
-                    'password' => bcrypt('secret'),
+                    'password' => bcrypt('antonio'),
                     'biografia' => 'Alegre'
+                ],
+                [
+                    'nombre' => 'Paco Edita',
+                    'slug' => 'paco',
+                    'email' => 'paco@udg.com',
+                    'password' => bcrypt('paco'),
+                    'biografia' => 'feliz'
                 ]
             ]
         );
