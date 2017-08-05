@@ -5,8 +5,14 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
+//las clases que extiendan la clase backendController son para autenticados
 class BackendController extends Controller
 {
+
+    protected $publicacionesPorPagina = 5;
+    protected $categoriasPorPagina = 15;
+
     /**
      * Create a new controller instance.
      *

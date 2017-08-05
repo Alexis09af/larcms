@@ -37,7 +37,7 @@ class PostsSeeder extends Seeder
                 'created_at' => $fechaCreacion,
                 'updated_at' => $fechaCreacion,
                 'published_at' => $i <5 ? $fechaPublicacion : (rand(0,1)==0 ? NULL : $fechaPublicacion->addDays(4)),
-                'categoria_id' => rand(1,3),
+                'categoria_id' => rand(2,4),
                 'contador_visitas' => rand(1,100)
 
 

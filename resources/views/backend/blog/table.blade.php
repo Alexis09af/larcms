@@ -1,7 +1,7 @@
 <table class="table table-bordered">
     <thead>
     <tr>
-        <td width="80">Action</td>
+        <td width="80">Acción</td>
         <td>Titulo</td>
         <td width="120">Autor</td>
         <td width="150">Categoria</td>

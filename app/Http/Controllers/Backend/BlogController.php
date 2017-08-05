@@ -12,7 +12,7 @@ class BlogController extends BackendController
 {
 
     protected $uploadPath;
-    protected $publicacionesPorPagina = 5;
+
 
 
     public function __construct()

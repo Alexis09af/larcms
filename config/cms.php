@@ -8,5 +8,6 @@ return[
             'height' => 175,
 
         ]
-    ]
+    ],
+    'default_categoria_id' => 1,
 ];

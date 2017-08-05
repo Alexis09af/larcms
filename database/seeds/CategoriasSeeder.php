@@ -13,6 +13,11 @@ class CategoriasSeeder extends Seeder
     {
         DB::table('lc_categorias')->truncate();
         DB::table('lc_categorias')->insert([
+
+            [
+                'titulo' => 'Sin Categoría',
+                'slug' => 'sin-categoria'
+            ],
             [
                 'titulo' => 'Diseño Web',
                 'slug' => 'diseno-web'

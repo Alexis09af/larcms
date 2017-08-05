@@ -1,6 +1,6 @@
 @extends('backend.backend')
 
-@section('title', 'larCMS | Blog Index')
+@section('title', 'larCMS | Categorias')
 
 @section('content')
 
@@ -8,15 +8,15 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Blog
-                <small>Muestra las publicaciones</small>
+                Categorias
+                <small>Muestra las categorias</small>
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
                 </li>
-                <li><a href="{{ route('backend.blog.index') }}">Blog</a></li>
-                <li class="active">Todas las publicaciones</li>
+                <li><a href="{{ route('backend.categorias.index') }}">Categorias</a></li>
+                <li class="active">Todas las categorias</li>
             </ol>
         </section>
 
@@ -27,11 +27,9 @@
                     <div class="box">
                         <div class="box-header clearfix">
                             <div class=pull-left">
-                                <a href="{{ route('backend.blog.create') }}" class="btn btn-info">Crea una publicación</a>
+                                <a href="{{ route('backend.categorias.create') }}" class="btn btn-info">Crea una categoría</a>
                             </div>
-                            <div class="pull-right todas_papelera">
-                                <a href="?status=todas">Todas</a> |
-                                <a href="?status=papelera">Papelera</a>
+                            <div class="pull-right">
                             </div>
                         </div>
                         <!-- /.box-header -->
@@ -40,27 +38,21 @@
 
                         <!-- Si no hay publicaciones -->
 
-                            @if (! $posts->count())
+                            @if (! $categorias->count())
                                 <div class="alert alert-info">
-                                    <strong>No hay publicaciones.</strong>
+                                    <strong>No hay categorias.</strong>
                                 </div>
                             @else
-                                @if($onlyTrashed)
-                                    @include('backend.blog.table-trash')
-                                @else
-                                    @include('backend.blog.table')
-                                @endif
+                                    @include('backend.categorias.table')
                             @endif
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer clearfix">
                             <div class="pull-left">
-                                {{ $posts->render() }}
+                                {{ $categorias->render() }}
                             </div>
                             <div class="pull-right ">
-                                <?php $postCount = $posts->count() ?>
-                                <p><small class="float-right">Mostrando: {{$postCount}}</small></p>
-                                <p><small class="float-right">Total: {{$postsTotales}}</small></p>
+                                <p><small class="float-right">Categorias: {{$totalCategorias}}</small></p>
                             </div>
                         </div>
                     </div>

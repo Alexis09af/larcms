@@ -20,7 +20,7 @@
                 {!! Form::close() !!}
 
                 {!! Form::open(['style' => 'display:inline-block;' , 'method' => 'DELETE', 'route' => ['backend.blog.force-destroy',$post->id]]) !!}
-                <button title="Delete Permanent" onclick="return confirm('Estas seguro que deseas eliminar la publicación permanentemente?')" type="submit" class="btn btn-xs btn-danger">
+                <button title="Delete Permanent" onclick="return confirm('Vas a eliminar la publicación, estás seguro?')" type="submit" class="btn btn-xs btn-danger">
                     <i class="fa fa-times"></i>
                 </button>
                 {!! Form::close() !!}
