@@ -13,13 +13,16 @@ class CheckPermissionsMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
+
+    /* hace referencia a app/helpers/permissions.php
+    */
     public function handle($request, Closure $next)
     {
-        $currentActionName = $request->route()->getActionName();
-        list($controller,$method) = explode('@',$currentActionName);
-        dd("C: $controller M: $method");
-
+        if ( ! check_user_permissions($request)) {
+            abort(403, "No tienes permisos para acceder a esta sección!");
+        }
 
         return $next($request);
+
     }
 }

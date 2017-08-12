@@ -38,7 +38,7 @@
             </td>
             <td>{{ $usuario->nombre }}</td>
             <td>{{ $usuario->email }}</td>
-            <td>{{ $usuario->email }}</td>
+            <td>{{ $usuario->roles->first()->display_name }}</td>
 
         </tr>
 

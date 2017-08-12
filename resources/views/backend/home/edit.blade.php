@@ -1,6 +1,6 @@
 @extends('backend.backend')
 
-@section('title', 'larCMS | Editar Usuario')
+@section('title', 'larCMS | Editar Cuenta')
 
 @section('content')
 
@@ -8,28 +8,27 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Usuarios
-                <small>Editar Usuario</small>
+                Perfil
+                <small>Editar Perfil</small>
             </h1>
             <ol class="breadcrumb">
                 <li>
                     <a href="{{url('/home')}}"><i class="fa fa-dashboard"></i>Escritorio</a>
                 </li>
-                <li><a href="{{ route('backend.usuarios.index') }}">Usuarios</a></li>
-                <li class="active">Editar Usuario</li>
+                <li class="active">Editar Perfil</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
             <div class="row">
+                @include('backend.includes.message')
                 {!! Form::model($usuario, [
                     'method' => 'PUT',
-                    'route' => ['backend.usuarios.update',$usuario->id],
-                    'files' => TRUE,
+                    'url' => '/editar-perfil',
                     'id' => 'usuarios-form'
                 ]) !!}
-                @include('backend.usuarios.form')
+                @include('backend.usuarios.form',['escondeRol' => true])
                 {!! Form::close() !!}
             </div>
     <!-- ./row -->

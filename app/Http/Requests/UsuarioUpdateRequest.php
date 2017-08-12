@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UsuarioUpdateRequest extends FormRequest
@@ -23,10 +24,13 @@ class UsuarioUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        // @todo arreglar cuando updateas un usuario
         return [
             'nombre' => 'required',
-            'email'    => 'email|required|unique:users,email,' . $this->route("usuario"),
-            'password' => 'required_with:password_confirmation|confirmed'
+            'email'    => 'email|required|unique:users,email,' . $this->route("users"),
+            'password' => 'required_with:password_confirmation|confirmed',
+            'slug'     => 'required|unique:users,slug,' . $this->route("users"),
+            'role' => 'required'
         ];
     }
 
@@ -36,6 +40,7 @@ class UsuarioUpdateRequest extends FormRequest
         return [
             'required' => 'Campo obligatorio',
             'confirmed' => 'La contraseña no coincide',
+            'unique' => 'Campo ya utilizado por otro usuario'
         ];
 
     }

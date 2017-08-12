@@ -31,6 +31,7 @@
                             </div>
                             <div class="pull-right todas_papelera">
                                 <a href="?status=todas">Todas</a> |
+                                <a href="?status=propios">Propios</a> |
                                 <a href="?status=papelera">Papelera</a>
                             </div>
                         </div>

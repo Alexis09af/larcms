@@ -18,7 +18,7 @@ class UsuariosController extends BackendController
     public function index()
     {
 
-        $usuarios      = user::orderBy('nombre')->paginate($this->categoriasPorPagina);
+        $usuarios      = user::orderBy('nombre')->paginate($this->usuariosPorPagina);
         $totalUsuarios = user::count();
 
         return view("backend.usuarios.index", compact('usuarios', 'totalUsuarios'));
@@ -47,8 +47,10 @@ class UsuariosController extends BackendController
         //Hasheamos el password al crear el usuario.
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
-        user::create($data);
 
+
+        $usuario = user::create($data);
+        $usuario->attachRole($request->role);
         return redirect("/backend/usuarios")->with("mensaje", "El usuario ha sido creada correctamente!");
     }
 
@@ -74,6 +76,8 @@ class UsuariosController extends BackendController
         $usuario = user::findOrFail($id);
 
         return view("backend.usuarios.edit", compact('usuario'));
+
+
     }
 
     /**
@@ -85,9 +89,13 @@ class UsuariosController extends BackendController
      */
     public function update(Requests\UsuarioUpdateRequest $request, $id)
     {
-        user::findOrFail($id)->update($request->all());
+       // $usuario = user::findOrFail($id)->update($request->all());
+        $usuario = user::findOrFail($id);
+        $usuario->update($request->all());
 
-        return redirect("/backend/usuarios")->with("mensaje", "Usuario actualizada correctamente!");
+        $usuario->detachRoles();
+        $usuario->attachRole($request->role);
+        return redirect("/backend/usuarios")->with("mensaje", "Usuario actualizado correctamente!");
     }
     /**
      * Remove the specified resource from storage.

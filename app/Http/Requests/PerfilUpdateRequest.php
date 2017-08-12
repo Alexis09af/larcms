@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UsuarioStoreRequest extends FormRequest
+class PerfilUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,9 @@ class UsuarioStoreRequest extends FormRequest
     {
         return [
             'nombre' => 'required',
-            'email' => 'email|required|unique:users',
-            'password' => 'required|confirmed',
-            'slug' => 'required|unique:users',
+            'email'    => 'email|required|unique:users,email,' . auth()->user()->id,
+            'password' => 'required_with:password_confirmation|confirmed',
+            'slug'     => 'required|unique:users,slug,' . auth()->user()->id,
             'role' => 'required'
         ];
     }
@@ -38,8 +38,6 @@ class UsuarioStoreRequest extends FormRequest
         return [
             'required' => 'Campo obligatorio',
             'confirmed' => 'La contraseña no coincide',
-            'email' => 'Formato: nombre@dominio.ext'
-
         ];
 
     }

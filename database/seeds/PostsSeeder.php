@@ -28,7 +28,7 @@ class PostsSeeder extends Seeder
             $fechaCreacion = clone($fecha);
             $image = "Post_Image_".rand(1,5).".jpg";
             $posts[]=[
-                'autor_id' => rand(1,2),
+                'autor_id' => rand(1,3),
                 'titulo' => $faker->sentence(rand(8,12)),
                 'excerpt' => $faker->text(rand(250,300)),
                 'body' => $faker->paragraphs(rand(10,15),true),

@@ -28,16 +28,23 @@ class BlogController extends BackendController
      */
     public function index(Request $request)
     {
+        $onlyTrashed = FALSE;
+
 
         if(($status = $request->get('status')) && $status =='papelera'){
+
             $postsTotales = lc_post::onlyTrashed()->count();
             $posts = lc_post::onlyTrashed()->with('categoria','autor')->latest()->paginate($this->publicacionesPorPagina);
             $onlyTrashed = TRUE;
         }
+        else if($status == 'propios'){
+            $postsTotales = $request->user()->posts->count();
+            $posts = $request->user()->posts()->with('categoria','autor')->latest()->paginate($this->publicacionesPorPagina);
+        }
         else{
             $postsTotales = lc_post::count();
             $posts = lc_post::with('categoria','autor')->latest()->paginate($this->publicacionesPorPagina);
-            $onlyTrashed = FALSE;
+
         }
         return view("backend.blog.index",compact('posts','postsTotales','onlyTrashed'));
     }

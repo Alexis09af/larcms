@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="/" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>M</b>B</span>
+        <span class="logo-mini"><b>L</b>C</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>MY</b>BLOG</span>
+        <span class="logo-lg"><b>lar</b>CMS</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -30,13 +30,13 @@
                             <img src="{{ $currentUser->gravatar() }}" class="img-circle" alt="User Image">
 
                             <p>
-                                {{ $currentUser->nombre }} - Web Developer
+                                {{ $currentUser->nombre }} - {{ $currentUser->roles->first()->display_name }}
                             </p>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{ url('/editar-perfil') }}" class="btn btn-default btn-flat">Perfil</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{ url('/logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sign out</a>

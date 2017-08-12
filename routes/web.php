@@ -40,7 +40,13 @@ Route::get('/autor/{autor}',[
 
 Auth::routes();
 
-Route::get('/home', 'Backend\HomeController@index')->name('home');
+Route::get('/admin', 'Backend\HomeController@index')->name('admin');
+
+
+Route::get('/editar-perfil', 'Backend\HomeController@edit');
+Route::put('/editar-perfil', 'Backend\HomeController@update');
+
+
 
 Route::get('logout', 'Auth\LoginController@logout');
 

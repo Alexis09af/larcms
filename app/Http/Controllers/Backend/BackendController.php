@@ -12,6 +12,7 @@ class BackendController extends Controller
 
     protected $publicacionesPorPagina = 5;
     protected $categoriasPorPagina = 15;
+    protected $usuariosPorPagina = 15;
 
     /**
      * Create a new controller instance.

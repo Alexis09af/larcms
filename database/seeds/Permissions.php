@@ -43,8 +43,8 @@ class Permissions extends Seeder
 
         // attach roles permissions
         $admin = Role::whereName('admin')->first();
-        $moderador = Role::whereName('editor')->first();
-        $author = Role::whereName('author')->first();
+        $moderador = Role::whereName('moderador')->first();
+        $autor = Role::whereName('autor')->first();
 
 
         //Añadimos los roles a los usuarios.
@@ -54,8 +54,8 @@ class Permissions extends Seeder
         $moderador->detachPermissions([$crudPost, $updateOthersPost, $deleteOthersPost, $crudCategory]);
         $moderador->attachPermissions([$crudPost, $updateOthersPost, $deleteOthersPost, $crudCategory]);
 
-        $author->detachPermission($crudPost);
-        $author->attachPermission($crudPost);
+        $autor->detachPermission($crudPost);
+        $autor->attachPermission($crudPost);
 
     }
 }
