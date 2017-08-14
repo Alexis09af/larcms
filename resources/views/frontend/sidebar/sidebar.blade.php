@@ -1,22 +1,23 @@
 <div class="col-md-4">
     <aside class="right-sidebar">
 
-        <!--
+        <!-- Formulario de busqueda -->
         <div class="search-widget">
+            <form action=""{{ route('blog') }}>
             <div class="input-group">
-              <input type="text" class="form-control input-lg" placeholder="Search for...">
+              <input type="text" class="form-control input-lg" value="{{ request('search') }}" name="search" placeholder="¿Que estás buscando?">
               <span class="input-group-btn">
-                <button class="btn btn-lg btn-default" type="button">
+                <button class="btn btn-lg btn-default" type="submit">
                     <i class="fa fa-search"></i>
                 </button>
               </span>
             </div>
         </div>
-        -->
+
 
         <div class="widget">
             <div class="widget-heading">
-                <h4>Categorias</h4>
+                <h4>Categorías</h4>
             </div>
             <div class="widget-body">
                 <ul class="categories">
@@ -32,7 +33,7 @@
 
         <div class="widget">
             <div class="widget-heading">
-                <h4>Popular Posts</h4>
+                <h4>Publicaciones populares</h4>
             </div>
             <div class="widget-body">
                 <ul class="popular-posts">
@@ -46,7 +47,7 @@
                             </a>
                         </div>
                         <div class="post-body">
-                            <h6><a href="{{ route('muestraPost', $post->slug) }}">{{ $popular->titulo }}</a></h6>
+                            <h6><a href="{{ route('muestraPost', $popular->slug) }}">{{ $popular->titulo }}</a></h6>
                             <div class="post-meta">
                                 <span>{{ $popular->fechaPublicacion }}</span>
                             </div>

@@ -5,22 +5,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                @if (!$posts->count())
-                    <div class="alert alert-warning">
-                        <p>No hay publicaciones</p>
-                    </div>
-                @else
-                    @if (isset($categoriaNombre))
-                        <div class="alert alert-info">
-                            <p>Categoria: <strong>{{$categoriaNombre}}</strong></p>
+                    @if (!$posts->count())
+                        <div class="alert alert-warning">
+                            <p>No hay publicaciones</p>
                         </div>
-                    @endif
-                    @if (isset($autorNombre))
-                        <div class="alert alert-info">
-                            <p>Autor: <strong>{{$autorNombre}}</strong></p>
-                        </div>
-                    @endif
-
+                    @else
+                <!-- Incluimos los mensajes que pueden aparecer en la cabecera de nustro blog.-->
+                @include('frontend.includes.alert')
 
 
                     @foreach($posts as $post)
@@ -59,7 +50,7 @@
 
 
                 <nav>
-                    {{$posts->links()}}
+                    {{$posts->appends(request()->only(['search']))->links()}}
                 </nav>
             </div>
 
