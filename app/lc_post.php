@@ -105,7 +105,34 @@ class lc_post extends Model
         return $this->excerpt ? Markdown::convertToHtml(e($this->excerpt)) : NULL;
     }
 
+    public function scopeFilter($query, $filter)
+    {
+        if (isset($filter['month']) && $month = $filter['month']) {
+            $query->whereRaw('month(published_at) = ?', [Carbon::parse($month)->month]);
+        }
 
+        if (isset($filter['year']) && $year = $filter['year']) {
+            $query->whereRaw('year(published_at) = ?', [$year]);
+        }
+
+        //Si hay parametro
+        if (isset($filter['search']) && $search = $filter['search'])
+        {
+            $query->where(function($q) use ($search) {
+                 $q->whereHas('autor', function($qr) use ($search) {
+                     $qr->where('nombre', 'LIKE', "%{$search}%");
+                });
+                 $q->orWhereHas('categoria', function($qr) use ($search) {
+                     $qr->where('titulo', 'LIKE', "%{$search}%");
+                 });
+                $q->orWhere('titulo', 'LIKE', "%{$search}%");
+                $q->orWhere('slug', 'LIKE', "%{$search}%");
+                $q->orWhere('excerpt', 'LIKE', "%{$search}%");
+                $q->orWhere('body', 'LIKE', "%{$search}%");
+            });
+        }
+    }
+    
 
 
 }

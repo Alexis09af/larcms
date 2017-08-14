@@ -50,7 +50,7 @@
 
 
                 <nav>
-                    {{$posts->appends(request()->only(['search']))->links()}}
+                    {{$posts->appends(request()->only(['search','month','year']))->links()}}
                 </nav>
             </div>
 

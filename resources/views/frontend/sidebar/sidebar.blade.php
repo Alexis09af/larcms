@@ -12,6 +12,7 @@
                 </button>
               </span>
             </div>
+            </form>
         </div>
 
 
@@ -31,9 +32,11 @@
             </div>
         </div>
 
+
+        <!-- Widget Publicaciones Populares -->
         <div class="widget">
             <div class="widget-heading">
-                <h4>Publicaciones populares</h4>
+                <h4>Lo Mas Popular!</h4>
             </div>
             <div class="widget-body">
                 <ul class="popular-posts">
@@ -58,24 +61,24 @@
             </div>
         </div>
 
-        <!--
+
+        <!-- Widget Histórico por fecha -->
         <div class="widget">
             <div class="widget-heading">
-                <h4>Tags</h4>
+                <h4>Archivos</h4>
             </div>
             <div class="widget-body">
-                <ul class="tags">
-                    <li><a href="#">PHP</a></li>
-                    <li><a href="#">Codeigniter</a></li>
-                    <li><a href="#">Yii</a></li>
-                    <li><a href="#">Laravel</a></li>
-                    <li><a href="#">Ruby on Rails</a></li>
-                    <li><a href="#">jQuery</a></li>
-                    <li><a href="#">Vue Js</a></li>
-                    <li><a href="#">React Js</a></li>
+                <ul class="categories">
+                    @foreach($archives as $archive)
+                        <li>
+                            <a href="{{ route('blog', ['month' => $archive->month, 'year' => $archive->year]) }}">{{ $archive->month . " " . $archive->year }}</a>
+                            <span class="badge pull-right">{{ $archive->post_count }}</span>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
-        -->
+
+
     </aside>
 </div>
