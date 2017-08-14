@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriasSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(Permissions::class);
+        $this->call(RedesSocialesSeeder::class);
     }
 }

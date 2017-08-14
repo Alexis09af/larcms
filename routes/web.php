@@ -68,6 +68,7 @@ Route::resource('/backend/categorias','Backend\CategoriasController',['as' => 'b
 
 Route::resource('/backend/usuarios','Backend\UsuariosController',['as' => 'backend']);
 
+Route::resource('/backend/redes-sociales','Backend\RedesSocialesController',['as' => 'backend']);
 
 Route::get('/backend/usuarios/confirmar/{users}', [
     'uses' => 'Backend\UsuariosController@confirm',

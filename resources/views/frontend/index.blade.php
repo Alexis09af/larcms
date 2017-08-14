@@ -10,6 +10,7 @@
                             <p>No hay publicaciones</p>
                         </div>
                     @else
+
                 <!-- Incluimos los mensajes que pueden aparecer en la cabecera de nustro blog.-->
                 @include('frontend.includes.alert')
 
@@ -35,11 +36,10 @@
                                             <li><i class="fa fa-user"></i><a href="{{ route('autor',$post->autor->slug) }}"> {{ $post->autor->nombre }}</a></li>
                                             <li><i class="fa fa-clock-o"></i><time> {{$post->fechaPublicacion}}</time></li>
                                             <li><i class="fa fa-folder"></i><a href="{{ route('categoria', $post->categoria->slug) }}"> {{ $post->categoria->titulo }}</a></li>
-                                            <li><i class="fa fa-comments"></i><a href="#">4 comentarios</a></li>
                                         </ul>
                                     </div>
                                     <div class="pull-right">
-                                        <a href=" {{ route('muestraPost',$post->slug) }} ">Continue Reading &raquo;</a>
+                                        <a href=" {{ route('muestraPost',$post->slug) }} ">Mas información &raquo;</a>
                                     </div>
                                 </div>
                             </div>

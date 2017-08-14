@@ -17,7 +17,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li>
-                <a href="{{ url('/home') }}">
+                <a href="{{ url('/admin') }}">
                     <i class="fa fa-dashboard"></i> <span>Escritorio</span>
                 </a>
             </li>
@@ -37,8 +37,11 @@
              @if (check_user_permissions(request(), "Categorias@index"))
             <li><a href="{{ route('backend.categorias.index') }}"><i class="fa fa-folder"></i> <span>Categorías</span></a></li>
              @endif
-            @if (check_user_permissions(request(), "Usuarios@index"))
-            <li><a href="{{ route('backend.usuarios.index') }}"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
+
+            <li><a href="{{ route('backend.redes-sociales.index') }}"><i class="fa fa-thumbs-o-up"></i> <span>Redes Sociales</span></a></li>
+
+            @if (check_user_permissions(request(), "usuarios@index"))
+                <li><a href="{{ route('backend.usuarios.index') }}"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
             @endif
         </ul>
     </section>
