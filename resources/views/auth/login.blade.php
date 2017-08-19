@@ -49,7 +49,7 @@
             </form>
 
             <br>
-            <a href="{{ url('/password/reset') }}">¿Has olvidado tu correo electrónico?</a><br>
+            <!--<a href="{{ url('/password/reset') }}">¿Has olvidado tu correo electrónico?</a><br> -->
 
         </div>
         <!-- /.login-box-body -->

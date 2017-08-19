@@ -11,42 +11,48 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 
 class lc_post extends Model
 {
+    /*Laravel nos proporciona softDeletes, que envia una publicación a la papelera sin ser eliminada permanentemente. */
     use SoftDeletes;
+    /*Campos que pueden ser modificados en la base de datos*/
     protected $fillable = ['titulo','slug','categoria_id','excerpt','body','published_at','image'];
+
+    /*Campos que seran tratados como fechas*/
     protected $dates = ['published_at'];
 
-    //Devuelve a que usuario pertenece el post.
+    //Devuelve a que usuario pertenece la publicación.
     public function autor(){
         return $this->belongsTo(user::class);
     }
 
-    //Devuelve la categoria a la que pertenece el post
+    //Devuelve la categoria a la que pertenece la publicación
     public function categoria(){
         return $this->belongsTo(lc_categoria::class);
     }
 
-    //Devuelve la fecha de un post en formato adecuado.
+    //Devuelve la fecha de una publicación en formato adecuado.
     public function getFechaPublicacionAttribute(){
         return is_null($this->published_at) ? '' : $this->published_at->diffForHumans();
     }
 
 
-    //Devuelve la query de los posts ordenada por fecha.
+    //Devuelve la query de las publicaciones ordenadas por fecha.
     public function scopeOrdenFecha($query){
         //El scope nos permite tratar querys para un modelo.
         return $query->orderBy('created_at','asc');
     }
 
-
+    //Devuelve la query de las publicaciones cuya fecha de publicación es inferior a la fecha actual.
     public function scopePublicado($query){
         $now = Carbon::now();
         return $query->where('published_at', '<=' ,$now);
     }
 
+    //Devuelve la query de las publicaciones ordenadas por número de visualizaciones.
     public function scopePopular($query){
         return $query->orderBy('contador_visitas', 'desc');
     }
 
+    //Devuelve la fecha en formato europeo.
     public function fechaFormatoES($showTimes = false){
         $format = "d-m-Y";
         if($showTimes) $format = $format . "H:i:s";

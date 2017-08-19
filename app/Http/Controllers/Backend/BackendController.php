@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class BackendController extends Controller
 {
 
-    protected $publicacionesPorPagina = 2;
+    protected $publicacionesPorPagina = 10;
     protected $categoriasPorPagina = 15;
     protected $usuariosPorPagina = 15;
 

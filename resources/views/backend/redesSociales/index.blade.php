@@ -26,9 +26,7 @@
                     <div class="box">
 
                         <div class="box-body ">
-
-
-
+                            @include('backend.includes.message')
 
                             {!! Form::model($redes, [
                                 'method' => 'PUT',
@@ -38,29 +36,21 @@
 
                             <div class="form-group">
                                 {!! Form::label('facebook') !!}
-                                {!! Form::checkbox('fbCheck') !!}
-                                (mostrar en web)
                                 {!! Form::text('fbLink',null, ['class'=>'form-control']) !!}
                             </div>
 
                             <div class="form-group">
                                 {!! Form::label('twitter') !!}
-                                {!! Form::checkbox('twtCheck') !!}
-                                (mostrar en web)
                                 {!! Form::text('twtLink',null, ['class'=>'form-control']) !!}
                             </div>
 
                             <div class="form-group">
                                 {!! Form::label('google','Google Plus') !!}
-                                {!! Form::checkbox('gpCheck') !!}
-                                (mostrar en web)
                                 {!! Form::text('gpLink',null, ['class'=>'form-control']) !!}
                             </div>
 
                             <div class="form-group">
                                 {!! Form::label('instagram') !!}
-                                {!! Form::checkbox('instaCheck') !!}
-                                (mostrar en web)
                                 {!! Form::text('instaLink',null, ['class'=>'form-control']) !!}
                             </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\lc_categoria;
 use App\lc_post;
+use App\lc_redesSociales;
 use App\user;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,9 @@ class BlogController extends Controller
             ->filter(request()->only(['term', 'year', 'month']))
             ->paginate($this->totalPostsPagina);
 
-        return view("frontend.index", compact('posts'));
+        $redes = lc_redesSociales::first();
+
+        return view("frontend.index", compact('posts','redes'));
     }
 
 

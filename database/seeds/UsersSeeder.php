@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
                 [
                     'nombre' => 'Alexis',
                     'slug' => 'alexis',
-                    'email' => 'Alexis@udg.com',
+                    'email' => 'axentar@hotmail.com',
                     'password' => bcrypt('alexis'),
                     'biografia' => 'Aficionado a la fotografia'
                 ],

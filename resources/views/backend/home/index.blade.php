@@ -22,11 +22,13 @@
                     <div class="box">
                         <!-- /.box-header -->
                         <div class="box-body ">
-                            <h3>Welcome to MyBlog!</h3>
-                            <p class="lead text-muted">Hallo {{ Auth::user()->nombre }}, Welcome to MyBlog</p>
+                            <h3>larCMS</h3>
+                            <p class="lead text-muted">Bienvenido {{ Auth::user()->nombre }}</p>
 
-                            <h4>Get started</h4>
-                            <p><a href="{{ route('backend.blog.create') }}" class="btn btn-primary">Write your first blog post</a> </p>
+                            <h4>Empecemos</h4>
+                            <p><a href="{{ route('backend.blog.create') }}" class="btn btn-primary">Escribe una publicación</a> </p>
+                            <p> <a href="{{ url('/editar-perfil') }}" class="btn btn-primary ">Modifica tu perfil</a> </p>
+
                         </div>
                         <!-- /.box-body -->
                     </div>

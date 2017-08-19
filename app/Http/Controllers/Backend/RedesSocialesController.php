@@ -71,10 +71,10 @@ class RedesSocialesController extends BackendController
      */
     public function update(Request $request, $id)
     {
-        $redes = lc_redesSociales::first();
-        $redes->update();
+        $redes = lc_redesSociales::findOrFail($id);
+        $redes->update($request->all());
 
-        return redirect("/backend/redes-sociales")->with("mensaje", "Redes sociales actualizadas correctamente!");
+        return redirect(route("backend.redes-sociales.index"))->with("mensaje", "Redes sociales actualizadas correctamente!");
     }
 
     /**

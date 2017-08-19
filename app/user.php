@@ -10,48 +10,45 @@ class user extends Authenticatable
 {
 
     use LaratrustUserTrait;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    /*Campos que pueden ser modificados en la base de datos*/
     protected $fillable = [
         'nombre', 'email', 'password','slug','biografia'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    /*Elementos protegidos que no pueden ser mostrados*/
     protected $hidden = [
         'password', 'remember_token',
     ];
-    /*
-     * Devuelve la lista de posts de un usuario.
-     */
+
+    /* Devuelve la lista de posts de un usuario.*/
     public function posts()
     {
         return $this->hasMany(lc_post::class,'autor_id');
 
     }
 
+
+    /*Devuelve la imagen utilizada en la web gravatar de un usuario*/
     public function gravatar(){
         $email = $this->email;
-        $default = asset("https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2000px-User_icon_2.svg.png");
+        $default = asset("http://icons.iconarchive.com/icons/graphicloads/flat-finance/256/person-icon.png");
         $size = 40;
 
         return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
 
     }
+
+    /* Utilizamos el slug para filtrar por usuario, recibiendo el slug por la url */
     public function getRouteKeyName(){
         return 'slug';
     }
 
+    /* Devuelve la información biográfica de un usuario, tratada correctamente con el markdown */
     public function getBiografiaHtmlAttribute($value) {
         return $this->biografia ? Markdown::convertToHtml(e($this->biografia)) : NULL;
     }
 
+    /*Encripta la contraseña para ser almacenada */
     public function setPasswordAttribute($value)
     {
         if (!empty($value)) $this->attributes['password'] = bcrypt($value);

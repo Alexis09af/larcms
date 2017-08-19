@@ -15,17 +15,13 @@ class CreateLcRedesSocialesTable extends Migration
     {
         Schema::create('lc_redes_sociales', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fbLink');
-            $table->integer('fbCheck');
+            $table->string('fbLink')->nullable();
 
-            $table->string('twtLink');
-            $table->integer('twtCheck');
+            $table->string('twtLink')->nullable();
 
-            $table->string('gpLink');
-            $table->integer('gpCheck');
+            $table->string('gpLink')->nullable();
 
-            $table->string('instaLink');
-            $table->integer('instaCheck');
+            $table->string('instaLink')->nullable();
 
             $table->timestamps();
         });

@@ -16,13 +16,9 @@ class RedesSocialesSeeder extends Seeder
         [
             [
                 'fbLink' => '',
-                'fbCheck' => '0',
                 'twtLink' => '',
-                'twtCheck' => '0',
                 'gpLink' => '',
-                'gpCheck' => '0',
                 'instaLink' => '',
-                'instaCheck' => '0',
             ]
         ]);
     }

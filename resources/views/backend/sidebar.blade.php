@@ -38,9 +38,10 @@
             <li><a href="{{ route('backend.categorias.index') }}"><i class="fa fa-folder"></i> <span>Categorías</span></a></li>
              @endif
 
-            <li><a href="{{ route('backend.redes-sociales.index') }}"><i class="fa fa-thumbs-o-up"></i> <span>Redes Sociales</span></a></li>
-
-            @if (check_user_permissions(request(), "usuarios@index"))
+            @if (check_user_permissions(request(), "Redes@index"))
+                <li><a href="{{ route('backend.redes-sociales.index') }}"><i class="fa fa-thumbs-o-up"></i> <span>Redes Sociales</span></a></li>
+            @endif
+            @if (check_user_permissions(request(), "Usuarios@index"))
                 <li><a href="{{ route('backend.usuarios.index') }}"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
             @endif
         </ul>

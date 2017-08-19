@@ -47,10 +47,18 @@
                     <div class="col-md-4">
                         <nav>
                             <ul class="social-icons">
-                                <li><a href="#" class="i fa fa-facebook"></a></li>
-                                <li><a href="#" class="i fa fa-twitter"></a></li>
-                                <li><a href="#" class="i fa fa-google-plus"></a></li>
-                                <li><a href="#" class="i fa fa-github"></a></li>
+                                 @if(  $redes->fbLink  )
+                                    <li><a href="{{$redes->fbLink}}" target="_blank" class="i fa fa-facebook"></a></li>
+                                @endif
+                                @if(  $redes->twtLink  )
+                                 <li><a href="{{ $redes->twtLink }}" target="_blank" class="i fa fa-twitter"></a></li>
+                                @endif
+                                 @if(  $redes->gpLink  )
+                                     <li><a href="{{ $redes->gpLink }}" target="_blank" class="i fa fa-google-plus"></a></li>
+                                @endif
+                                 @if(  $redes->instaLink  )
+                                         <li><a href="{{ $redes->instaLink }}" target="_blank" class="i fa fa-instagram"></a></li>
+                                @endif
                             </ul>
                         </nav>
                     </div>

@@ -31,7 +31,8 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
     $classesMap = [
         'Blog'       => 'post',
         'Usuarios'      => 'user',
-        'Categorias' => 'category'
+        'Categorias' => 'category',
+        'Redes' => 'redes',
     ];
 
 
@@ -43,6 +44,7 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
         {
             //$className = post, user o category
             $className = $classesMap[$controller];
+
 
             if ($className == 'post' && in_array($method, ['edit', 'update', 'destroy', 'restore', 'forceDestroy']))
             {

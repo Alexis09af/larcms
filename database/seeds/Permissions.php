@@ -41,6 +41,11 @@ class Permissions extends Seeder
         $crudUser->name = "crud-user";
         $crudUser->save();
 
+        // update others post
+        $updateRedesSociales = new Permission();
+        $updateRedesSociales->name = "crud-redes";
+        $updateRedesSociales->save();
+
         // attach roles permissions
         $admin = Role::whereName('admin')->first();
         $moderador = Role::whereName('moderador')->first();
@@ -48,8 +53,8 @@ class Permissions extends Seeder
 
 
         //Añadimos los roles a los usuarios.
-        $admin->detachPermissions([$crudPost, $updateOthersPost, $deleteOthersPost, $crudCategory, $crudUser]);
-        $admin->attachPermissions([$crudPost, $updateOthersPost, $deleteOthersPost, $crudCategory, $crudUser]);
+        $admin->detachPermissions([$crudPost, $updateOthersPost, $deleteOthersPost, $crudCategory, $crudUser,$updateRedesSociales]);
+        $admin->attachPermissions([$crudPost, $updateOthersPost, $deleteOthersPost, $crudCategory, $crudUser,$updateRedesSociales]);
 
         $moderador->detachPermissions([$crudPost, $updateOthersPost, $deleteOthersPost, $crudCategory]);
         $moderador->attachPermissions([$crudPost, $updateOthersPost, $deleteOthersPost, $crudCategory]);
