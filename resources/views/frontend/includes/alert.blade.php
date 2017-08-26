@@ -1,6 +1,6 @@
 @if (isset($categoriaNombre))
     <div class="alert alert-info">
-        <p>Categoria: <strong>{{$categoriaNombre}}</strong></p>
+        <p>Categoría: <strong>{{$categoriaNombre}}</strong></p>
     </div>
 @endif
 @if (isset($autorNombre))

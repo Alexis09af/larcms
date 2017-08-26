@@ -71,7 +71,20 @@
                 <ul class="categories">
                     @foreach($archives as $archive)
                         <li>
-                            <a href="{{ route('blog', ['month' => $archive->month, 'year' => $archive->year]) }}">{{ $archive->month . " " . $archive->year }}</a>
+                            @if($archive->month=='enero')<?php $mes = 'january' ; ?>
+                            @elseif ($archive->month=='febrero')<?php $mes = 'february' ; ?>
+                            @elseif ($archive->month=='marzo')<?php $mes = 'march' ; ?>
+                            @elseif ($archive->month=='abril')<?php $mes = 'april' ; ?>
+                            @elseif ($archive->month=='mayo')<?php $mes = 'may' ; ?>
+                            @elseif ($archive->month=='junio')<?php $mes = 'june' ; ?>
+                            @elseif ($archive->month=='julio')<?php $mes = 'july' ; ?>
+                            @elseif ($archive->month=='agosto')<?php $mes = 'august' ; ?>
+                            @elseif ($archive->month=='septiembre')<?php $mes = 'september' ; ?>
+                            @elseif ($archive->month=='octubre')<?php $mes = 'october' ; ?>
+                            @elseif ($archive->month=='noviembre')<?php $mes = 'november' ; ?>
+                            @elseif ($archive->month=='diciembre')<?php $mes = 'december' ; ?>
+                            @endif
+                            <a href="{{ route('blog', ['month' => $mes, 'year' => $archive->year]) }}">{{ $archive->month . " " . $archive->year }}</a>
                             <span class="badge pull-right">{{ $archive->post_count }}</span>
                         </li>
                     @endforeach

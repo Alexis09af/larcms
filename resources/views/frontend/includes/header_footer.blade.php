@@ -46,6 +46,7 @@
                     </div>
                     <div class="col-md-4">
                         <nav>
+
                             <ul class="social-icons">
                                  @if(  $redes->fbLink  )
                                     <li><a href="{{$redes->fbLink}}" target="_blank" class="i fa fa-facebook"></a></li>

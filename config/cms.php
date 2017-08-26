@@ -1,5 +1,7 @@
 <?php
 
+use App\lc_redesSociales;
+
 return[
     'image' =>[
         'directory' => 'img',
@@ -11,4 +13,5 @@ return[
     ],
     'default_categoria_id' => 1,
     'default_usuario_id' => 1,
+
 ];

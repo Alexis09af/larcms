@@ -36,7 +36,7 @@
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
-                                <input type="checkbox" name="remember"> Remember me
+                                <input type="checkbox" name="remember"> Recuérdame
                             </label>
                         </div>
                     </div>
@@ -49,7 +49,6 @@
             </form>
 
             <br>
-            <!--<a href="{{ url('/password/reset') }}">¿Has olvidado tu correo electrónico?</a><br> -->
 
         </div>
         <!-- /.login-box-body -->

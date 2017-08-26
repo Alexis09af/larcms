@@ -53,8 +53,8 @@
                     {{$posts->appends(request()->only(['search','month','year']))->links()}}
                 </nav>
             </div>
-
             @include('frontend.sidebar.sidebar')
+
 
         </div>
     </div>

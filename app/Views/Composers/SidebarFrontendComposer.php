@@ -1,16 +1,19 @@
 <?php
 namespace App\Views\Composers;
 
+use App\lc_redesSociales;
 use Illuminate\View\View;
 use App\lc_categoria;
 use App\lc_post;
 
-class NavigationComposer {
+class SidebarFrontendComposer {
 
     public function compose(View $view){
+
         $this->composeCategorias($view);
         $this->composePopulares($view);
         $this->composeArchives($view);
+        $this->composeRedes($view);
     }
 
     private function composeCategorias(View $view){
@@ -29,12 +32,18 @@ class NavigationComposer {
     }
 
     private function composeArchives(View $view){
-
         $archives = lc_post::selectRaw('count(id) as post_count, year(published_at) year, monthname(published_at) month')
             ->publicado()
             ->groupBy('year','month')
             ->orderByRaw('min(published_at) desc')
             ->get();
+
         $view->with('archives', $archives);
+
+    }
+
+    private function composeRedes(View $view){
+        $redes=lc_redesSociales::first();
+        $view->with('redes', $redes);
     }
 }
