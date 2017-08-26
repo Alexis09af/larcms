@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 class BlogController extends BackendController
 {
 
+    //Guardamos la ruta para subir imagenes
     protected $uploadPath;
 
 
@@ -22,9 +23,8 @@ class BlogController extends BackendController
     }
 
     /**
-     * Display a listing of the resource.
+     * Encargado de mostrar las publicaciones para su edición
      *
-     * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
@@ -50,9 +50,8 @@ class BlogController extends BackendController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Cuando queremos crear una publicación, nos redigirá a la vista para crear la publicación
+     * y utilizara el modelo lc_post.
      */
     public function create(lc_post $post)
     {
@@ -60,10 +59,8 @@ class BlogController extends BackendController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Despues de utilizar la funcion create, si queremos realizar la validación para crear la publicación se utilizará este metodo
+     * @param Requests\PostRequest $request Encargado de validar que los datos de una publicación son correctos antes de guardarla.
      */
     public function store(Requests\PostRequest $request)
     {
@@ -75,6 +72,9 @@ class BlogController extends BackendController
         return redirect(route('backend.blog.index'))->with('mensaje','La publicación ha sido creada correctamente!');
     }
 
+    /*
+     * Encargado de manejar la request para almacenar correctamente la imagen como su thumbnail
+     */
     private function handleRequest($request){
         $data = $request->all();
 
@@ -83,8 +83,6 @@ class BlogController extends BackendController
             $fileName = $image->getClientOriginalName();
 
             $destination = $this->uploadPath;
-
-
 
             $successUploaded = $image->move($destination, $fileName);
 
@@ -105,22 +103,13 @@ class BlogController extends BackendController
         }
         return $data;
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
+
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra la vista para editar una publicación ya creada
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id Identificador de la publicación
      */
     public function edit($id)
     {
@@ -131,9 +120,8 @@ class BlogController extends BackendController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request Encargado de validar que los datos de una publicación son correctos antes de actualizarla.
+     * @param  int  $id Identificador de la publicación
      */
     public function update(Requests\PostRequest $request, $id)
     {
@@ -144,10 +132,9 @@ class BlogController extends BackendController
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Envia a la papelera una publicación
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id Identificador de la publicación
      */
     public function destroy($id)
     {
@@ -155,6 +142,11 @@ class BlogController extends BackendController
         return redirect(route('backend.blog.index'))->with('enviado-papelera',['La publicación ha sido enviada a la papelera!',$id]);
     }
 
+    /**
+     * Devuelve de la papelera una publicación
+     *
+     * @param  int  $id Identificador de la publicación
+     */
     public function restore($id)
     {
         $post = lc_post::withTrashed()->findOrFail($id);
@@ -162,12 +154,30 @@ class BlogController extends BackendController
         return redirect(route('backend.blog.index'))->with('mensaje','La publicación ha sido restaurada correctamente.');
     }
 
+    /**
+     * Eliminamos completamente una publicación
+     *
+     * @param  int  $id Identificador de la publicación
+     */
     public function forceDestroy($id)
     {
+        $post = lc_post::withTrashed()->findOrFail($id)->forceDelete();
 
-        lc_post::withTrashed()->findOrFail($id)->forceDelete();
+        //Cuando borramos una publicación, eliminamos la imagen del servidor.
+        if ( ! empty($post->image) )
+        {
+            $imagePath     = $this->uploadPath . '/' . $post->image;
+            $ext           = substr(strrchr($post->image, '.'), 1);
+            $thumbnail     = str_replace(".{$ext}", "_thumb.{$ext}", $post->image);
+            $thumbnailPath = $this->uploadPath . '/' . $thumbnail;
+
+            if ( file_exists($imagePath) ) unlink($imagePath);
+            if ( file_exists($thumbnailPath) ) unlink($thumbnailPath);
+        }
+
         return redirect(route('backend.blog.index'))->with('mensaje','La publicación ha sido eliminada correctamente.');
-
     }
+
+    public function show($id){}
 
 }

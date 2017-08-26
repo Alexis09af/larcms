@@ -38,7 +38,7 @@ class lc_post extends Model
     //Devuelve la query de las publicaciones ordenadas por fecha.
     public function scopeOrdenFecha($query){
         //El scope nos permite tratar querys para un modelo.
-        return $query->orderBy('created_at','asc');
+        return $query->orderBy('created_at','desc');
     }
 
     //Devuelve la query de las publicaciones cuya fecha de publicación es inferior a la fecha actual.

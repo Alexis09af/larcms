@@ -13,7 +13,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li>
-                    <a href="{{url('/admin')}}"><i class="fa fa-dashboard"></i>Dashboard</a>
+                    <a href="{{url('/admin')}}"><i class="fa fa-dashboard"></i>Escritorio</a>
                 </li>
                 <li class="active"><a href="{{ route('backend.categorias.index') }}">Redes Sociales</a></li>
             </ol>

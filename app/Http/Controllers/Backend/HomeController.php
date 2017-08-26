@@ -11,8 +11,7 @@ class HomeController extends BackendController
 
 
     /**
-     * Show the application dashboard.
-     *
+     * Muestra la página principal del backend
      * @return \Illuminate\Http\Response
      */
     public function index()
@@ -20,7 +19,8 @@ class HomeController extends BackendController
         return view('backend.home.index');
     }
 
-    public function edit(Request $request)
+    //Encargado de llamar la vista de modificación del usuario actual
+    public function edit()
     {
         $usuario = Auth::user();
 
@@ -28,6 +28,11 @@ class HomeController extends BackendController
 
     }
 
+
+    /**
+     * Cuando modificamos los datos del usuario actual, la funcion update recibe un request con los datos para cambiar, y nos redirige a la pagina principal.
+     * @param  \Illuminate\Http\Request  $request Encargado de validar que los datos de un usuario son correctos antes de actualizarlo.
+     */
     public function update(Requests\perfilUpdateRequest $request)
     {
         $usuario = Auth::user();

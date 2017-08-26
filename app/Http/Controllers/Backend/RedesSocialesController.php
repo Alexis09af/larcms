@@ -9,9 +9,7 @@ use App\Http\Controllers\Controller;
 class RedesSocialesController extends BackendController
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Muestra las Redes sociales
      */
     public function index()
     {
@@ -19,53 +17,11 @@ class RedesSocialesController extends BackendController
         return view("backend.redesSociales.index",compact('redes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
+     * Modifica las redes sociales
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request Encargado de validar que los datos de las redes sociales son correctos antes de crearlos.
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -77,14 +33,10 @@ class RedesSocialesController extends BackendController
         return redirect(route("backend.redes-sociales.index"))->with("mensaje", "Redes sociales actualizadas correctamente!");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
+    public function create(){}
+    public function store(Request $request){}
+    public function show($id){}
+    public function edit($id){}
+    public function destroy($id){}
 }

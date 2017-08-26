@@ -11,13 +11,10 @@ use App\user;
 class UsuariosController extends BackendController
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Muestra la lista de usuarios
      */
     public function index()
     {
-
         $usuarios      = user::orderBy('nombre')->paginate($this->usuariosPorPagina);
         $totalUsuarios = user::count();
 
@@ -25,9 +22,7 @@ class UsuariosController extends BackendController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Muestra el formulario para crear un usuario.
      */
     public function create()
     {
@@ -36,10 +31,8 @@ class UsuariosController extends BackendController
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Guarda un nuevo usuario
+     * @param  \Illuminate\Http\Request  $request Encargado de validar que los datos de un usuario son correctos antes de crearlo.
      */
     public function store(Requests\UsuarioStoreRequest $request)
     {
@@ -54,22 +47,13 @@ class UsuariosController extends BackendController
         return redirect("/backend/usuarios")->with("mensaje", "El usuario ha sido creada correctamente!");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
+    public function show($id){}
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario de para editar un usuario
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id Identificador del usuario
      */
     public function edit($id)
     {
@@ -81,11 +65,10 @@ class UsuariosController extends BackendController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza el usuario
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request  Encargado de validar que los datos de un usuario son correctos antes de actualizarlo.
+     * @param  int  $id Identificador del usuario
      */
     public function update(Requests\UsuarioUpdateRequest $request, $id)
     {
@@ -98,15 +81,13 @@ class UsuariosController extends BackendController
         return redirect("/backend/usuarios")->with("mensaje", "Usuario actualizado correctamente!");
     }
     /**
-     * Remove the specified resource from storage.
+     * Elimina un usuario
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id Identificador del usuario
+     *  @param  \Illuminate\Http\Request  $request  Valida que no se pueda eliminar el usuario principal.
      */
     public function destroy(Requests\UsuarioDestroyRequest $request, $id)
     {
-
-        /* @todo eliminar imagenes de los posts creados del servidor. */
 
         $usuario = User::findOrFail($id);
 

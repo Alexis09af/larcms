@@ -12,9 +12,7 @@ use App\lc_post;
 class CategoriasController extends BackendController
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Muestra la lista de categorías.
      */
     public function index()
     {
@@ -26,9 +24,7 @@ class CategoriasController extends BackendController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+    * Muestra el formulario para crear una nueva categoría
      */
     public function create()
     {
@@ -37,9 +33,9 @@ class CategoriasController extends BackendController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Función para almacenar una nueva categoria
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request Encargado de validar que los datos de una categoría son correctos antes de crearla.
      * @return \Illuminate\Http\Response
      */
     public function store(Requests\CategoriaStoreRequest $request)
@@ -49,22 +45,10 @@ class CategoriasController extends BackendController
         return redirect("/backend/categorias")->with("mensaje", "La categoría ha sido creada correctamente!");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Muestra el formulario para editar una categoria.
+     * @param  int  $id Identificador de la categoría
      */
     public function edit($id)
     {
@@ -74,11 +58,10 @@ class CategoriasController extends BackendController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza una categoria
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request Encargado de validar que los datos de una categoría son correctos antes de actualizarla.
+     * @param  int  $id Identificador de la categoría
      */
     public function update(Requests\CategoriaUpdateRequest $request, $id)
     {
@@ -87,10 +70,8 @@ class CategoriasController extends BackendController
         return redirect("/backend/categorias")->with("mensaje", "Categoría actualizada correctamente!");
     }
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * Elimina la categoria y actualiza a la categoría por defecto las publicaciones de la categoría eliminada.
+     * @param  int  $id Identificador de la categoría.
      */
     public function destroy(Requests\CategoriaDestroyRequest $request, $id)
     {
@@ -103,4 +84,10 @@ class CategoriasController extends BackendController
 
         return redirect("/backend/categorias")->with("mensaje", "Categoría eliminada correctamente!");
     }
+
+
+
+    public function show($id){}
+
+
 }
