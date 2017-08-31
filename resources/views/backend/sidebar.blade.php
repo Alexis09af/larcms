@@ -9,7 +9,8 @@
                 <img src="{{ $currentUser->gravatar() }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{ $currentUser->name }}</p>
+                <p>{{ $currentUser->nombre }}</p>
+
             </div>
         </div>
 
@@ -43,6 +44,11 @@
             @if (check_user_permissions(request(), "Usuarios@index"))
                 <li><a href="{{ route('backend.usuarios.index') }}"><i class="fa fa-users"></i> <span>Usuarios</span></a></li>
             @endif
+            <li>
+                <a href="https://es.gravatar.com/" target="_blank">
+                    <i class="fa fa-user "></i> <span>Foto de perfil</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

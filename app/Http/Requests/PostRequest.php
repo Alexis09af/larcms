@@ -27,10 +27,11 @@ class PostRequest extends FormRequest
         $rules =
             [
                 'titulo' => 'required',
+                'excerpt' => 'required',
                 'slug' => 'required|unique:lc_posts',
                 'body' => 'required',
                 'categoria_id' => 'required',
-                'published_at' => 'required|date_format:Y-m-d H:i:s',
+                'published_at' => 'required',
                 'image' => 'mimes:jpg,jpeg,bmp,png'
             ];
 

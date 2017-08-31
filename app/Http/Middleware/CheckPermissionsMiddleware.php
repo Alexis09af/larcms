@@ -19,7 +19,8 @@ class CheckPermissionsMiddleware
     public function handle($request, Closure $next)
     {
         if ( ! check_user_permissions($request)) {
-            abort(403, "No tienes permisos para acceder a esta sección!");
+            //abort(403, "No tienes permisos para acceder a esta sección!");
+            abort(403);
         }
 
         return $next($request);

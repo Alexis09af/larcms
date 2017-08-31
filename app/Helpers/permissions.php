@@ -56,7 +56,7 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
                     (!$currentUser->can('update-others-post') || !$currentUser->can('delete-others-post')) )
                 {
                     $post = lc_post::withTrashed()->find($id);
-                    if ($post->author_id !== $currentUser->id) {
+                    if ($post->autor_id !== $currentUser->id) {
                         return false;
                     }
                 }

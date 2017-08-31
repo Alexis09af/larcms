@@ -33,7 +33,7 @@
 
 
             <!-- EXCERPT -->
-            <div class="form-group excerpt">
+            <div class="form-group excerpt {{ $errors->has('excerpt') ? 'has-error' : '' }}">
                 {!! Form::label('excerpt','Excerpt') !!}
                 {!! Form::textarea('excerpt',null, ['class'=>'form-control']) !!}
             </div>
@@ -60,16 +60,14 @@
         </div>
         <div class="box-body">
             <!-- FECHA PUBLICACIÓN -->
-            <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
-                {!! Form::label('published_at','Fecha Publicación') !!}
-                <div class="form-group">
+                <div class="form-group {{ $errors->has('published_at') ? 'has-error' : '' }}">
+                    {!! Form::label('published_at', 'Fecha de publicación') !!}
                     <div class='input-group date' id='datetimepicker1'>
-                        {!! Form::text('published_at',null, ['class'=>'form-control','placeholder'=>'Y-m-d H:m:s']) !!}
+                        {!! Form::text('published_at', null, ['class' => 'form-control', 'placeholder' => 'Y-m-d H:m:s']) !!}
                         <span class="input-group-addon">
-                                             <span class="glyphicon glyphicon-calendar"></span>
-                                         </span>
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
                     </div>
-                </div>
                 @if($errors->has('published_at'))
                     <span class="help-block">{{ $errors->first('published_at') }} </span>
                 @endif
@@ -86,7 +84,7 @@
     </div>
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Categoria</h3>
+            <h3 class="box-title">Categoría</h3>
         </div>
         <div class="box-body text-center">
 
@@ -116,10 +114,10 @@
                     </div>
                     <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
                     <div>
-                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+                                    <span class="btn btn-default btn-file"><span class="fileinput-new">Selecciona imagen</span><span class="fileinput-exists">Cambia</span>
                                         {!! Form::file('image') !!}
                                     </span>
-                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                        <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Borra</a>
                     </div>
                 </div>
 
