@@ -32,8 +32,10 @@ function check_user_permissions($request, $actionName = NULL, $id = NULL)
         'Blog'       => 'post',
         'Usuarios'      => 'user',
         'Categorias' => 'category',
-        'Redes' => 'redes',
+        'RedesSociales' => 'redes',
     ];
+
+    //dd($classesMap[$controller]);asdf();
 
 
     $return = true;

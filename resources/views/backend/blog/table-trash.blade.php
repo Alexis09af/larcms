@@ -29,7 +29,7 @@
                 {!! Form::open(['style' => 'display:inline-block;', 'method' => 'DELETE', 'route' => ['backend.blog.force-destroy', $post->id]]) !!}
 
                     @if (check_user_permissions($request, "Blog@forceDestroy", $post->id))
-                        <button title="Delete Permanent" onclick="return confirm('You are about to delete a post permanently. Are you sure?')" type="submit" class="btn btn-xs btn-danger">
+                        <button title="Delete Permanent" onclick="return confirm('¿Eliminar la publicación?')" type="submit" class="btn btn-xs btn-danger">
                             <i class="fa fa-times"></i>
                         </button>
                     @else
