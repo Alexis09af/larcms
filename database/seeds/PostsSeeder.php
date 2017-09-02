@@ -16,6 +16,25 @@ class PostsSeeder extends Seeder
         // Resetea la tabla posts
         DB::table('lc_posts')->truncate();
 
+        DB::table('lc_posts')->insert([
+
+            [
+                'autor_id' => 1,
+                'titulo' => 'Primera publicación',
+                'excerpt' => 'Bienvenido a larCMS',
+                'body' => 'Accede al administrador para gestionar publicaciones',
+                'slug' => 'primera-publicacion',
+                'image' => "primera_publicacion.jpg",
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'published_at' => Carbon::now(),
+                'categoria_id' => 1,
+                'contador_visitas' => 0
+            ],
+
+        ]);
+
+        /*
         //inicializa la tabla con 36 post
         $posts = [];
         $image = "";
@@ -45,7 +64,9 @@ class PostsSeeder extends Seeder
             ];
         }
 
+
         DB::table('lc_posts')->insert($posts);
+        */
 
     }
 }

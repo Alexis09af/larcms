@@ -19,26 +19,12 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert(
             [
                 [
-                    'nombre' => 'Alexis',
-                    'slug' => 'alexis',
-                    'email' => 'axentar@hotmail.com',
-                    'password' => bcrypt('alexis'),
-                    'biografia' => 'Aficionado a la fotografia'
+                    'nombre' => 'Administrador',
+                    'slug' => 'administrador',
+                    'email' => 'admin@admin.com',
+                    'password' => bcrypt('admin'),
+                    'biografia' => 'Laravel!!'
                 ],
-                [
-                    'nombre' => 'Antonio Modera',
-                    'slug' => 'antonio',
-                    'email' => 'Antonio@udg.com',
-                    'password' => bcrypt('antonio'),
-                    'biografia' => 'Alegre'
-                ],
-                [
-                    'nombre' => 'Paco Edita',
-                    'slug' => 'paco',
-                    'email' => 'paco@udg.com',
-                    'password' => bcrypt('paco'),
-                    'biografia' => 'feliz'
-                ]
             ]
         );
     }

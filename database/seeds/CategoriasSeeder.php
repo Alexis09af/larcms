@@ -18,18 +18,7 @@ class CategoriasSeeder extends Seeder
                 'titulo' => 'Sin Categoría',
                 'slug' => 'sin-categoria'
             ],
-            [
-                'titulo' => 'Diseño Web',
-                'slug' => 'diseno-web'
-            ],
-            [
-                'titulo' => 'Posicionamiento SEO',
-                'slug' => 'posicionamiento-seo'
-            ],
-            [
-                'titulo' => 'Fotografia',
-                'slug' => 'fotografia'
-            ],
+
         ]);
 
     }
