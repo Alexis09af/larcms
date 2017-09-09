@@ -14,7 +14,7 @@ class Permissions extends Seeder
      */
     public function run()
     {
-        DB::table('permissions')->truncate();
+        DB::table('permissions')->delete();
 
         // crud post (Create, Read, Update, Delete)
         $crudPost = new Permission();
