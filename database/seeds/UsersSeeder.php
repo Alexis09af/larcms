@@ -13,7 +13,7 @@ class UsersSeeder extends Seeder
     {
         // Reseteamos la tabla de usuarios
 
-        DB::table('users')->truncate();
+        DB::table('users')->delete();
 
         // Generamos el usuario inicial
         DB::table('users')->insert(

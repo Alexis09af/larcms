@@ -16,16 +16,21 @@ class CreateLcPostsTable extends Migration
         Schema::create('lc_posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('autor_id')->unsigned();
-            $table->foreign('autor_id')->references('id')->on('users')->onDelete('restrict');
             $table->string('titulo');
             $table->string('slug',250)->unique();
             $table->text('excerpt');
             $table->text('body');
             $table->string('image')->nullable();
             $table->integer('categoria_id')->unsigned();
-            $table->foreign('categoria_id')->references('id')->on('lc_categorias')->onDelete('restrict');
             $table->timestamps();
         });
+
+        Schema::table('lc_posts',function($table){
+            $table->foreign('autor_id')->references('id')->on('users')->onDelete('restrict');
+            $table->foreign('categoria_id')->references('id')->on('lc_categorias')->onDelete('restrict');
+        });
+
+
     }
 
     /**

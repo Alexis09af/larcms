@@ -14,7 +14,7 @@ class PostsSeeder extends Seeder
     public function run()
     {
         // Resetea la tabla posts
-        DB::table('lc_posts')->truncate();
+        DB::table('lc_posts')->delete();
 
         DB::table('lc_posts')->insert([
 

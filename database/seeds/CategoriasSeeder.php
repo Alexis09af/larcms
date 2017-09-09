@@ -11,7 +11,7 @@ class CategoriasSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('lc_categorias')->truncate();
+        DB::table('lc_categorias')->delete();
         DB::table('lc_categorias')->insert([
 
             [

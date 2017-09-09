@@ -11,7 +11,7 @@ class RedesSocialesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('lc_redes_sociales')->truncate();
+        DB::table('lc_redes_sociales')->delete();
         DB::table('lc_redes_sociales')->insert(
         [
             [
