@@ -24,8 +24,8 @@ class CategoriaUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo' => 'required|max:255|unique:lc_categorias,titulo,' . $this->route('categorias'),
-            'slug'  => 'required|max:255|unique:lc_categorias,slug,' . $this->route('categorias'),
+            'titulo' => 'required|max:255|unique:lc_categorias,titulo,' . $this->route('categoria'),
+            'slug'  => 'required|max:255|unique:lc_categorias,slug,' . $this->route('categoria'),
         ];
     }
 
