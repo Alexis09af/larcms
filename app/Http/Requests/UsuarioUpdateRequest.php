@@ -27,9 +27,9 @@ class UsuarioUpdateRequest extends FormRequest
         // @todo arreglar cuando updateas un usuario
         return [
             'nombre' => 'required',
-            'email'    => 'email|required|unique:users,email,' . $this->route("users"),
+            'email'    => 'email|required|unique:users,email,' . $this->route("usuario"),
             'password' => 'required_with:password_confirmation|confirmed',
-            'slug'     => 'required|unique:users,slug,' . $this->route("users"),
+            'slug'     => 'required|unique:users,slug,' . $this->route("usuario"),
             'role' => 'required'
         ];
     }
